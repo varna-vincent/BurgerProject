@@ -19,14 +19,24 @@
   </head>
 
   <body class="text-center">
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 box-shadow"> 
+  <h5 class="my-0 mr-md-auto font-weight-normal text-primary logo">Burger Project</h5> 
+  
+</div>
+  
 
-    @include('layouts.nav')
-
-    <div class="container-fluid">
+    <div class="container"  align="left">
      
       @yield('content')
-
-      @include('layouts.footer')
+      <form>
+    <div class="form-group  p-5 px-md-5">
+    <label  for="userEmail"><b>Enter your email address : <b></label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your email address"/>
+    <div class="py-3">
+    <a class="btn btn-outline-primary" href="/checkEmail">Submit</a>
+    <div>
+  </div>
+      </form>
 
     </div>
 

@@ -18,3 +18,12 @@ Route::get('/', function () {
 Route::get('/shop', function () {
     return view('products');
 });
+Route::get('/signIn', function () {
+    return view('auth.signIn');
+});
+Route::get('/forgotpwd', function () {
+    return view('forgotPwd');
+});
+Route::get('/checkEmail', function () {
+    return view('checkEmail');
+});
