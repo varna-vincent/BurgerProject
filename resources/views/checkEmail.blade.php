@@ -19,14 +19,25 @@
   </head>
 
   <body class="text-center">
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 box-shadow"> 
+  <h5 class="my-0 mr-md-auto font-weight-normal text-primary logo">Burger Project</h5> 
+  
+</div>
+  
 
-    @include('layouts.nav')
+    <div class="container">
 
-    <div class="container-fluid">
-     
-      @yield('content')
-
-      @include('layouts.footer')
+     <h2 class="py-3" >Check Your Email</h2>
+      <!--@yield('content')-->
+      <form>
+    <div class="form-group  p-3 px-md-3">
+    <label> 
+      We've sent an email to ja********@y****.**.**. Click the link in the email to reset your password.
+      If you don't see the email, check other places it might be, like your junk, spam, social, or other folders.
+    </label>
+    <div>
+  </div>
+      </form>
 
     </div>
 
