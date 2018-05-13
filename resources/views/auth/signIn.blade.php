@@ -1,45 +1,46 @@
 @extends('layouts.master')
 
 @section('content')
-
+<script src="{{ asset('js/validateForm.js') }}"></script>
 <div class="container">
 	<div class="row">
 		<div class="col-8">
 			<div>
 				<h2 class="py-3">Sign Up</h2>
-				<form>
+				<div id="errdiv"> </div>
+				<form onsubmit="return validateFormSignUp()">
 					<div class="form-group row">
-						<label for="example-text-input" class="col-4 col-form-label" align="right"><b>Name:</b></label>
+						<label for="uname_sign_up" class="col-4 col-form-label" align="right"><b>Name:</b></label>
 						<div class="col-8">
-							<input class="form-control" type="text" placeholder="Enter your name" id="example-text-input">
+							<input class="form-control" type="text" placeholder="Enter your name" id="uname_sign_up">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="example-email-input" class="col-4 col-form-label" align="right"><b>Email:</b></label>
+						<label for="email_sign_up" class="col-4 col-form-label" align="right"><b>Email:</b></label>
 						<div class="col-8">
-							<input class="form-control" type="email" placeholder="Enter email address" id="example-search-input">
+							<input class="form-control" type="email" placeholder="Enter email address" id="email_sign_up">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="example-password-input" class="col-4 col-form-label" align="right"><b>Password:</b></label>
+						<label for="uname_sign_up" class="col-4 col-form-label" align="right"><b>Password:</b></label>
 						<div class="col-8">
-							<input class="form-control" type="password" placeholder="Enter password" id="example-email-input">
+							<input class="form-control" type="password" placeholder="Enter password" id="password_sign_up">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="example-password-input" class="col-4 col-form-label" align="right"><b>Confirm Password:</b></label>
+						<label for="confirm_password_sign_up" class="col-4 col-form-label" align="right"><b>Confirm Password:</b></label>
 						<div class="col-8">
-							<input class="form-control" type="password" placeholder="Confirm your password" id="example-url-input">
+							<input class="form-control" type="password" placeholder="Confirm your password" id="confirm_password_sign_up">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="example-tel-input" class="col-4 col-form-label" align="right"><b>Phone number:</b></label>
+						<label for="phnum_sign_up" class="col-4 col-form-label" align="right"><b>Phone number:</b></label>
 						<div class="col-8">
-							<input class="form-control" type="tel" placeholder="Enter your phone number" id="example-tel-input">
+							<input class="form-control" type="tel" placeholder="Enter your phone number" id="phnum_sign_up">
 						</div>
 					</div>
 					<div class="form-group" >
-						<a class="btn btn-outline-primary"  href="#">Submit</a>
+						<input type="submit" class="btn btn-outline-primary"/>
 					</div>
 				</form>
 			</div>
@@ -47,7 +48,8 @@
 		<div class="col-4 border-left">
 			<div align="left">
 				<h2 class="py-3">Sign In</h2>
-				<form>
+				<div id="errlogindiv"> </div>
+				<form onsubmit="return validateFormLogin()">
 					<div class="form-group">
 						<label for="username"><b>Username: </b></label>
 						<input type="username" class="form-control" id="username" placeholder="Enter username">
