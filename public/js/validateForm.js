@@ -39,19 +39,19 @@ function validateFormSignUp(){
 }
 function validateFormLogin() {
 	event.preventDefault();
-	var uname_login = document.getElementById('username').value;
+	var email_login = document.getElementById('email').value;
 	var password_login = document.getElementById('pwd').value;
 
-	var uname_login_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+	var email_login_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 	var password_login_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 
-    if(uname_login==""){
+    if(email_login==""){
     	$('#errlogindiv').addClass('alert alert-danger');
-         document.getElementById('errlogindiv').innerHTML = 'Enter username';
+         document.getElementById('errlogindiv').innerHTML = 'Enter email';
     }else if(password_login==""){
     	$('#errlogindiv').addClass('alert alert-danger');
          document.getElementById('errlogindiv').innerHTML = 'Enter password';
-    }else if(!uname_login.match(uname_login_pattern)){
+    }else if(!email_login.match(email_login_pattern)){
     	$('#errlogindiv').addClass('alert alert-danger');
          document.getElementById('errlogindiv').innerHTML = 'Username not correct';
     }else if(!password_login.match(password_login_pattern)){

@@ -1,73 +1,83 @@
 @extends('layouts.master')
 
 @section('content')
-<script src="{{ asset('js/validateForm.js') }}"></script>
-<div class="container">
-	<div class="row">
-		<div class="col-8">
-			<div>
-				<h2 class="py-3">Sign Up</h2>
-				<div id="errdiv"> </div>
-				<form onsubmit="return validateFormSignUp()">
-					<div class="form-group row">
-						<label for="uname_sign_up" class="col-4 col-form-label" align="right"><b>Name:</b></label>
-						<div class="col-8">
-							<input class="form-control" type="text" placeholder="Enter your name" id="uname_sign_up">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="email_sign_up" class="col-4 col-form-label" align="right"><b>Email:</b></label>
-						<div class="col-8">
-							<input class="form-control" type="email" placeholder="Enter email address" id="email_sign_up">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="uname_sign_up" class="col-4 col-form-label" align="right"><b>Password:</b></label>
-						<div class="col-8">
-							<input class="form-control" type="password" placeholder="Enter password" id="password_sign_up">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="confirm_password_sign_up" class="col-4 col-form-label" align="right"><b>Confirm Password:</b></label>
-						<div class="col-8">
-							<input class="form-control" type="password" placeholder="Confirm your password" id="confirm_password_sign_up">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="phnum_sign_up" class="col-4 col-form-label" align="right"><b>Phone number:</b></label>
-						<div class="col-8">
-							<input class="form-control" type="tel" placeholder="Enter your phone number" id="phnum_sign_up">
-						</div>
-					</div>
-					<div class="form-group" >
-						<input type="submit" class="btn btn-outline-primary"/>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="col-4 border-left">
-			<div align="left">
-				<h2 class="py-3">Sign In</h2>
-				<div id="errlogindiv"> </div>
-				<form onsubmit="return validateFormLogin()" >
-					<div class="form-group">
-						<label for="username"><b>Username: </b></label>
-						<input type="username" class="form-control" id="username" placeholder="Enter username">
-					</div>
-					<div class="form-group">
-						<label for="pwd"><b>Password:</b></label>
-						<input type="password" class="form-control" id="pwd" placeholder="Enter password">
-						<p><a href="/forgotpwd" class="text-primary">Forgot Password?</a></p>
-					</div>
-					<div class="checkbox">
-						<label><input type="checkbox"> Remember me</label>
-					</div>
-					<div>
-					<input type="submit" value="Login" class="btn btn-outline-primary"/>
-                    </div>
-				</form>
-			</div>
+
+<div class="container d-flex p-2">
+    <div class="d-flex w-75 p-4 flex-column">
+    	<div class="text-left">
+    		<h2 class="py-3">Sign Up</h2>
+			<div id="errdiv"> </div>
+        	<form method="POST" onsubmit="return validateFormSignUp()" action="{{ route('register') }}">
+                {{ csrf_field() }}
+                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                    <label for="name"><b>Name</b></label>
+                    <input id="uname_sign_up" type="text" placeholder="Enter name" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                    @if ($errors->has('name'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                    <label for="email"><b>E-Mail Address</b></label>
+                    <input id="email_sign_up" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    <label for="password"><b>Password</b></label>
+                    <input id="password_sign_up" type="password" class="form-control"  placeholder="Enter password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="password-confirm"><b>Confirm Password</b></label>
+                    <input id="confirm_password_sign_up" type="password" class="form-control" placeholder="Confirm password" name="password_confirmation" required>
+                </div>
+                <div class="form-group">
+					<label for="phnum_sign_up"><b>Phone number:</b></label>
+					<input class="form-control" type="tel" name="phone" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your phone number" id="phnum_sign_up">
+				</div>
+				<div class="form-group" >
+					<input type="submit" class="btn btn-outline-primary"/>
+				</div>
+            </form>
+        </div>
+    </div>
+    <span class="border border-light"></span>
+    <div class="d-flex w-75 flex-column p-4">
+		<div class="text-left">
+			<h2 class="py-3">Sign In</h2>
+			<div id="errlogindiv"> </div>
+			<form onsubmit="return validateFormLogin()" >
+				<div class="form-group">
+					<label for="email"><b>Email: </b></label>
+					<input type="email" class="form-control" id="email" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required="">
+				</div>
+				<div class="form-group">
+					<label for="pwd"><b>Password:</b></label>
+					<input type="password" class="form-control" id="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter password" required="">
+					<p><a href="/forgotpwd" class="text-primary">Forgot Password?</a></p>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox"> Remember me</label>
+				</div>
+				<div>
+				<input type="submit" value="Login" class="btn btn-outline-primary"/>
+                </div>
+			</form>
 		</div>
 	</div>
 </div>
+<script src="{{ asset('js/validateForm.js') }}"></script>
 @endsection
