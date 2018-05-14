@@ -49,7 +49,7 @@
 			<div align="left">
 				<h2 class="py-3">Sign In</h2>
 				<div id="errlogindiv"> </div>
-				<form onsubmit="return validateFormLogin()">
+				<form onsubmit="return validateFormLogin()" >
 					<div class="form-group">
 						<label for="username"><b>Username: </b></label>
 						<input type="username" class="form-control" id="username" placeholder="Enter username">
@@ -63,7 +63,7 @@
 						<label><input type="checkbox"> Remember me</label>
 					</div>
 					<div>
-					<button type="submit" class="btn btn-outline-primary">Login</button>
+					<input type="submit" value="Login" class="btn btn-outline-primary"/>
                     </div>
 				</form>
 			</div>
