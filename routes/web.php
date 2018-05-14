@@ -27,3 +27,6 @@ Route::get('/forgotpwd', function () {
 Route::get('/checkEmail', function () {
     return view('checkEmail');
 });
+Route::get('/resetPassword', function () {
+    return view('ResetPwd');
+});
