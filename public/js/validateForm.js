@@ -1,5 +1,6 @@
 
 function validateFormSignUp(){
+	event.preventDefault();
 	var uname_sign_up = document.getElementById('uname_sign_up').value;
 	var email_sign_up = document.getElementById('email_sign_up').value;
 	var password_sign_up = document.getElementById('password_sign_up').value;
@@ -37,6 +38,7 @@ function validateFormSignUp(){
 	}
 }
 function validateFormLogin() {
+	event.preventDefault();
 	var uname_login = document.getElementById('username').value;
 	var password_login = document.getElementById('pwd').value;
 
@@ -56,12 +58,13 @@ function validateFormLogin() {
     	$('#errlogindiv').addClass('alert alert-danger');
          document.getElementById('errlogindiv').innerHTML = 'Password not correct';
     }else{
-    	$('#errlogindiv').removeClass('alert alert-danger');
+    	 $('#errlogindiv').removeClass('alert alert-danger');
          document.getElementById('errlogindiv').innerHTML = "";
     }
 
 }
 function validateFrgtPwd(){
+	event.preventDefault();
 	var email_frgtPwd = document.getElementById('userEmail_FrgtPwd').value;
 	var email_frgtPwd_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
@@ -75,4 +78,17 @@ function validateFrgtPwd(){
 		 $('#err_frgtPwd').removeClass('alert alert-danger');
          document.getElementById('err_frgtPwd').innerHTML = "";
 	}
+}
+function validateResetPwd(){
+	event.preventDefault();
+	var old_pwd =  document.getElementById('oldPwd').value;
+	var new_pwd =  document.getElementById('newPwd').value;
+	if(old_pwd == new_pwd){
+		$('#errDiv_reset').addClass('alert alert-danger');
+		document.getElementById('errDiv_reset').innerHTML = 'New Password should not be same as old password';
+	}else{
+		$('#errDiv_reset').removeClass('alert alert-danger');
+		document.getElementById('errDiv_reset').innerHTML = "";
+	}
+
 }
