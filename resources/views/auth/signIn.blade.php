@@ -11,7 +11,7 @@
                 {{ csrf_field() }}
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                     <label for="name"><b>Name</b></label>
-                    <input id="uname_sign_up" type="text" placeholder="Enter name" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                    <input id="uname_sign_up" type="text" pattern="^[a-zA-Z ]{2,30}$" placeholder="Enter name" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                     @if ($errors->has('name'))
                         <span class="help-block">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
 					<label for="phnum_sign_up"><b>Phone number:</b></label>
-					<input class="form-control" type="tel" name="phone" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your phone number" id="phnum_sign_up">
+					<input class="form-control" type="tel" name="phone" pattern="^[0-9]{10}$" placeholder="Enter your phone number" id="phnum_sign_up">
 				</div>
 				<div class="form-group" >
 					<input type="submit" class="btn btn-outline-primary"/>
