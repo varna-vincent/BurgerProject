@@ -7,11 +7,11 @@
     	<div class="text-left">
     		<h2 class="py-3">Sign Up</h2>
 			<div id="errdiv"> </div>
-        	<form method="POST" onsubmit="return validateFormSignUp()" action="{{ route('register') }}">
+        	<form id="signupForm" method="POST" onsubmit="return validateFormSignUp()" action="{{ route('register') }}">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="name"><b>Name</b></label>
-                    <input id="uname_sign_up" type="text" placeholder="Enter name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}"  required autofocus>
+                    <input id="uname_sign_up" type="text" placeholder="Enter name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" pattern="^[a-zA-Z\s]*$" name="name" value="{{ old('name') }}"  required autofocus>
                     @if ($errors->has('name'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('name') }}</strong>

@@ -7,7 +7,7 @@ function validateFormSignUp(){
 	var confirm_password_sign_up = document.getElementById('confirm_password_sign_up').value;
 	var phnum_sign_up = document.getElementById('phnum_sign_up').value;
 
-	var uname_sign_up_pattern = /^[a-zA-Z]{2,30}$/;
+	var uname_sign_up_pattern = /^[a-zA-Z\s]*$/;
 	var email_sign_up_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 	var password_sign_up_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
 	var phnum_sign_up_pattern = /^[0-9]{10}$/;
@@ -32,10 +32,11 @@ function validateFormSignUp(){
 	}else if(password_sign_up != confirm_password_sign_up){
 		$('#errdiv').addClass('alert alert-danger');
 		document.getElementById('errdiv').innerHTML = 'Password and Confirm Password not matching';
-	} else{
+	} else {
 		$('#errdiv').removeClass('alert alert-danger');
 		document.getElementById('errdiv').innerHTML = "";
-	}
+		document.getElementById("signupForm").submit();
+	} 
 }
 function validateFormLogin() {
 	event.preventDefault();
