@@ -9,7 +9,7 @@ function validateFormSignUp(){
 
 	var uname_sign_up_pattern = /^[a-zA-Z ]{2,30}$/;
 	var email_sign_up_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-	var password_sign_up_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+	var password_sign_up_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
 	var phnum_sign_up_pattern = /^[0-9]{10}$/;
 
 	
@@ -43,7 +43,7 @@ function validateFormLogin() {
 	var password_login = document.getElementById('pwd').value;
 
 	var email_login_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-	var password_login_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+	var password_login_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
 
 	if(email_login==""){
 		$('#errlogindiv').addClass('alert alert-danger');
