@@ -47,11 +47,14 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
+    {   
+        $name_regex = "/^[a-zA-Z\s]*$/";
+        $password_regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/";
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => array('required','string','max:255','regex:'.$name_regex ),
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => array('required','string','min:8','confirmed','regex:'.$password_regex ),
+            'phone' => 'numeric'
         ]);
     }
 
@@ -67,6 +70,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone' => $data['phone'],
+            'role' => 'user'
         ]);
     }
 }
