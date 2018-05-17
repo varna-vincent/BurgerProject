@@ -43,8 +43,25 @@ body {
   height: 85vh;
 }
 
-.pricing-header {
-  max-width: 700px;
+.btn-outline-customlight {
+  color: #f8f9fa;
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
+}
+
+.btn-outline-customdark {
+  color: #343a40;
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
+}
+
+.btn-outline-customprimary {
+  color: #007bff;
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
 }
 
 .card-deck .card {
