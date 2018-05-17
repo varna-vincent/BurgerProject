@@ -54,13 +54,14 @@ function validateFormLogin() {
          document.getElementById('errlogindiv').innerHTML = 'Enter password';
     }else if(!email_login.match(email_login_pattern)){
     	$('#errlogindiv').addClass('alert alert-danger');
-         document.getElementById('errlogindiv').innerHTML = 'Username not correct';
+         document.getElementById('errlogindiv').innerHTML = 'Invalid email';
     }else if(!password_login.match(password_login_pattern)){
     	$('#errlogindiv').addClass('alert alert-danger');
          document.getElementById('errlogindiv').innerHTML = 'Password not correct';
     }else{
     	 $('#errlogindiv').removeClass('alert alert-danger');
          document.getElementById('errlogindiv').innerHTML = "";
+		 document.getElementById("signinForm").submit();
     }
 
 }
