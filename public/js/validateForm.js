@@ -46,22 +46,22 @@ function validateFormLogin() {
 	var email_login_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 	var password_login_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
 
-    if(email_login==""){
-    	$('#errlogindiv').addClass('alert alert-danger');
-         document.getElementById('errlogindiv').innerHTML = 'Enter email';
-    }else if(password_login==""){
-    	$('#errlogindiv').addClass('alert alert-danger');
-         document.getElementById('errlogindiv').innerHTML = 'Enter password';
-    }else if(!email_login.match(email_login_pattern)){
-    	$('#errlogindiv').addClass('alert alert-danger');
-         document.getElementById('errlogindiv').innerHTML = 'Username not correct';
-    }else if(!password_login.match(password_login_pattern)){
-    	$('#errlogindiv').addClass('alert alert-danger');
-         document.getElementById('errlogindiv').innerHTML = 'Password not correct';
-    }else{
-    	 $('#errlogindiv').removeClass('alert alert-danger');
-         document.getElementById('errlogindiv').innerHTML = "";
-    }
+	if(email_login==""){
+		$('#errlogindiv').addClass('alert alert-danger');
+		document.getElementById('errlogindiv').innerHTML = 'Enter email';
+	}else if(password_login==""){
+		$('#errlogindiv').addClass('alert alert-danger');
+		document.getElementById('errlogindiv').innerHTML = 'Enter password';
+	}else if(!email_login.match(email_login_pattern)){
+		$('#errlogindiv').addClass('alert alert-danger');
+		document.getElementById('errlogindiv').innerHTML = 'Username not correct';
+	}else if(!password_login.match(password_login_pattern)){
+		$('#errlogindiv').addClass('alert alert-danger');
+		document.getElementById('errlogindiv').innerHTML = 'Password not correct';
+	}else{
+		$('#errlogindiv').removeClass('alert alert-danger');
+		document.getElementById('errlogindiv').innerHTML = "";
+	}
 
 }
 function validateFrgtPwd(){
@@ -70,26 +70,35 @@ function validateFrgtPwd(){
 	var email_frgtPwd_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
 	if(email_frgtPwd == ""){
-		 $('#err_frgtPwd').addClass('alert alert-danger');
-         document.getElementById('err_frgtPwd').innerHTML = 'Enter email address';
+		$('#err_frgtPwd').addClass('alert alert-danger');
+		document.getElementById('err_frgtPwd').innerHTML = 'Enter email address';
 	}else if(!email_frgtPwd.match(email_frgtPwd_pattern)){
-		 $('#err_frgtPwd').addClass('alert alert-danger');
-         document.getElementById('err_frgtPwd').innerHTML = 'Enter valid email address';
+		$('#err_frgtPwd').addClass('alert alert-danger');
+		document.getElementById('err_frgtPwd').innerHTML = 'Enter valid email address';
 	}else{
-		 $('#err_frgtPwd').removeClass('alert alert-danger');
-         document.getElementById('err_frgtPwd').innerHTML = "";
+		$('#err_frgtPwd').removeClass('alert alert-danger');
+		document.getElementById('err_frgtPwd').innerHTML = "";
 	}
 }
 function validateResetPwd(){
+
 	event.preventDefault();
 	var old_pwd =  document.getElementById('oldPwd').value;
 	var new_pwd =  document.getElementById('newPwd').value;
+	var password_pattern = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
 	if(old_pwd == new_pwd){
 		$('#errDiv_reset').addClass('alert alert-danger');
 		document.getElementById('errDiv_reset').innerHTML = 'New Password should not be same as old password';
+	}else if(!old_pwd.match(password_pattern)){
+		$('#errDiv_reset').addClass('alert alert-danger');
+		document.getElementById('errDiv_reset').innerHTML =  'Password should contain uppercase, lowerscase,number and special characters and should be 8 characters long' ;
+	}else if(!new_pwd.match(password_pattern)){
+		$('#errDiv_reset').addClass('alert alert-danger');
+		document.getElementById('errDiv_reset').innerHTML =  'Password should contain uppercase, lowerscase,number and special characters and should be 8 characters long' ;
 	}else{
-		$('#errDiv_reset').removeClass('alert alert-danger');
-		document.getElementById('errDiv_reset').innerHTML = "";
-	}
+			$('#errDiv_reset').removeClass('alert alert-danger');
+			document.getElementById('errDiv_reset').innerHTML = "";
+		}
 
-}
+	}

@@ -12,6 +12,7 @@
                 <div class="form-group">
                     <label for="name"><b>Name</b></label>
                     <input id="uname_sign_up" type="text" placeholder="Enter name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" pattern="^[a-zA-Z\s]*$" name="name" value="{{ old('name') }}"  required autofocus>
+
                     @if ($errors->has('name'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -47,6 +48,8 @@
                 </div>
                 <div class="form-group">
 					<label for="phnum_sign_up"><b>Phone number:</b></label>
+
+
 					<input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" type="tel" name="phone" placeholder="eg. 4081234567" id="phnum_sign_up">
 					<small id="phoneHelp" class="form-text text-muted">Phone number should only contain numbers</small>
 

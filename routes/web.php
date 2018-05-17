@@ -36,3 +36,6 @@ Route::get('/checkEmail', function () {
 Route::get('/resetPassword', function () {
     return view('ResetPwd');
 });
+Route::get('/cart', function () {
+    return view('cart');
+});
