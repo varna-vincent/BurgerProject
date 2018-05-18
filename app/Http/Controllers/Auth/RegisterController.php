@@ -52,8 +52,8 @@ class RegisterController extends Controller
         $password_regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/";
         return Validator::make($data, [
             'name' => array('required','string','max:255','regex:'.$name_regex ),
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => array('required','string','min:8','confirmed','regex:'.$password_regex ),
+            'signup_email' => 'required|string|email|max:255|unique:users,email',
+            'signup_password' => array('required','string','min:8','confirmed','regex:'.$password_regex ),
             'phone' => 'numeric'
         ]);
     }
@@ -68,8 +68,8 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'email' => $data['signup_email'],
+            'password' => Hash::make($data['signup_password']),
             'phone' => $data['phone'],
             'role' => 'user'
         ]);

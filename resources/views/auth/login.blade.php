@@ -20,29 +20,29 @@
 
                 <div class="form-group">
                     <label for="email"><b>E-Mail Address</b></label>
-                    <input id="email_sign_up" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                    <input id="email_sign_up" type="email" class="form-control{{ $errors->has('signup_email') ? ' is-invalid' : '' }}" name="signup_email" value="{{ old('email') }}" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
 
-                    @if ($errors->has('email'))
+                    @if ($errors->has('signup_email'))
                         <span class="invalid-feedback">
-                            <strong>{{ $errors->first('email') }}</strong>
+                            <strong>{{ $errors->first('signup_email') }}</strong>
                         </span>
                     @endif
                 </div>
 
                 <div class="form-group">
                     <label for="password"><b>Password</b></label>
-                    <input id="password_sign_up" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"  placeholder="Enter password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" required>
+                    <input id="password_sign_up" type="password" class="form-control{{ $errors->has('signup_password') ? ' is-invalid' : '' }}"  placeholder="Enter password" name="signup_password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" required>
                     <small id="passwordHelp" class="form-text text-muted">Password must contain atleast 8 characters, 1 upper, 1 lower, 1 number and 1 special character</small>
 
-                    @if ($errors->has('password'))
+                    @if ($errors->has('signup_password'))
                         <span class="invalid-feedback">
-                            <strong>{{ $errors->first('password') }}</strong>
+                            <strong>{{ $errors->first('signup_password') }}</strong>
                         </span>
                     @endif
                 </div>
                 <div class="form-group">
                     <label for="password-confirm"><b>Confirm Password</b></label>
-                    <input id="confirm_password_sign_up" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" class="form-control" placeholder="Confirm password" name="password_confirmation" required>
+                    <input id="confirm_password_sign_up" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" class="form-control" placeholder="Confirm password" name="signup_password_confirmation" required>
                 </div>
                 <div class="form-group">
 					<label for="phnum_sign_up"><b>Phone number:</b></label>
@@ -66,14 +66,26 @@
 		<div class="text-left">
 			<h2 class="py-3">Sign In</h2>
 			<div id="errlogindiv"> </div>
-			<form onsubmit="return validateFormLogin()" >
+			<form id="signinForm" onsubmit="return validateFormLogin()" method="POST" action="/login">
+				{{ csrf_field() }}
 				<div class="form-group">
 					<label for="email"><b>Email: </b></label>
-					<input type="email" class="form-control" id="email" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required="">
+					<input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" placeholder="Enter email" value="{{ old('email') }}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required="">
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
 				</div>
 				<div class="form-group">
 					<label for="pwd"><b>Password:</b></label>
-					<input type="password" class="form-control" id="pwd" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" placeholder="Enter password" required="">
+					<input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="pwd" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" placeholder="Enter password" required="">
+
+                    @if ($errors->has('password'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
 					<p><a href="/forgotpwd" class="text-primary">Forgot Password?</a></p>
 				</div>
 				<div class="checkbox">

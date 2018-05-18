@@ -46,22 +46,24 @@ function validateFormLogin() {
 	var email_login_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 	var password_login_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
 
-	if(email_login==""){
-		$('#errlogindiv').addClass('alert alert-danger');
-		document.getElementById('errlogindiv').innerHTML = 'Enter email';
-	}else if(password_login==""){
-		$('#errlogindiv').addClass('alert alert-danger');
-		document.getElementById('errlogindiv').innerHTML = 'Enter password';
-	}else if(!email_login.match(email_login_pattern)){
-		$('#errlogindiv').addClass('alert alert-danger');
-		document.getElementById('errlogindiv').innerHTML = 'Username not correct';
-	}else if(!password_login.match(password_login_pattern)){
-		$('#errlogindiv').addClass('alert alert-danger');
-		document.getElementById('errlogindiv').innerHTML = 'Password not correct';
-	}else{
-		$('#errlogindiv').removeClass('alert alert-danger');
-		document.getElementById('errlogindiv').innerHTML = "";
-	}
+    if(email_login==""){
+    	$('#errlogindiv').addClass('alert alert-danger');
+         document.getElementById('errlogindiv').innerHTML = 'Enter email';
+    }else if(password_login==""){
+    	$('#errlogindiv').addClass('alert alert-danger');
+         document.getElementById('errlogindiv').innerHTML = 'Enter password';
+    }else if(!email_login.match(email_login_pattern)){
+    	$('#errlogindiv').addClass('alert alert-danger');
+         document.getElementById('errlogindiv').innerHTML = 'Invalid email';
+    }else if(!password_login.match(password_login_pattern)){
+    	$('#errlogindiv').addClass('alert alert-danger');
+         document.getElementById('errlogindiv').innerHTML = 'Password not correct';
+    }else{
+    	 $('#errlogindiv').removeClass('alert alert-danger');
+         document.getElementById('errlogindiv').innerHTML = "";
+		 document.getElementById("signinForm").submit();
+    }
+
 }
 function validateFrgtPwd(){
 	event.preventDefault();
