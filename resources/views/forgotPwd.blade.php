@@ -2,7 +2,7 @@
 @extends('layouts.master')
 
 @section('content')
-<script src="{{ asset('js/validateForm.js') }}"></script>
+<script src="{{ asset('js/loginValidations.js') }}"></script>
 <div class="container">
     <form onsubmit="return validateFrgtPwd()" >
       <div class="form-group  p-5 px-md-5">

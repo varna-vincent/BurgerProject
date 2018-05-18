@@ -2,17 +2,17 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 box-shadow">
   <h5 class="my-0 mr-md-auto font-weight-normal text-light logo"><a href="/">Burger Project</a></h5>
   <nav class="navbar-expand-lg my-2 my-md-0 mr-md-3">
-  	<a class="btn btn-outline-customlight" href="#">About Us</a>
+  	<a class="btn btn-outline-customlight" href="/about">About Us</a>
     <a class="btn btn-outline-customlight" href="/shop">Shop</a>
-    <a class="btn btn-outline-customlight" href="#">Contact Us</a>
+    <a class="btn btn-outline-customlight" href="/contact">Contact Us</a>
     @if (!Auth::guest())
-    <a class="btn btn-outline-customlight" href="#">My Cart</a>
+    <a class="btn btn-outline-customlight" href="/orders">My Cart</a>
     <div class="btn-group">
 	  <button type="button" class="btn btn-outline-customprimary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	    {{ Auth::user()->name }}
 	  </button>
 	  <div class="dropdown-menu">
-	    <a class="dropdown-item" href="#">My Orders</a>
+	    <a class="dropdown-item" href="/orderHistory">My Orders</a>
 	    <a class="dropdown-item" href="#">My Profile</a>
 	    <a class="dropdown-item" href="#">Shipping Address</a>
 	    <div class="dropdown-divider"></div>

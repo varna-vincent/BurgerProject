@@ -22,12 +22,25 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+	
+    Route::apiResource('orders', 'OrderController');
+});
+
+Route::apiResource('products', 'ProductController');
+
 Route::get('/shop', function () {
     return view('products');
 });
-Route::get('/signIn', function () {
-    return view('auth.signIn');
-});
+
 Route::get('/forgotpwd', function () {
     return view('forgotPwd');
 });
@@ -37,6 +50,7 @@ Route::get('/checkEmail', function () {
 Route::get('/resetPassword', function () {
     return view('ResetPwd');
 });
-Route::get('/cart', function () {
-    return view('cart');
+
+Route::get('/orderHistory', function () {
+    return view('orderHistory');
 });

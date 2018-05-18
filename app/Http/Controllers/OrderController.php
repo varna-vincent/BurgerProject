@@ -14,7 +14,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+
+        $orders = Order::with('orderproducts.products')->where('status','Cart')->first();
+        return view('cart', compact('orders'));
     }
 
     /**
