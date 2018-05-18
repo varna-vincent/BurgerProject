@@ -23,20 +23,20 @@
                      </tr>
                  </thead>
                  <tbody>
+                    @foreach($orders->orderproducts as $order)
                   <tr>
                      <td>
                         <a><img src="images/chickenburger.jpg" alt="chicken burger" height="100" width="100"></a><br>
-                        <p class="text-dark"><b>Chicken burger</b></p>
+                        <p class="text-dark"><b>{{ $order->name }}</b></p>
                     </td>
-                    <td>1
+                    <td><input type=number value="{{ $order->quantity }}" min="1" max="10" />
                     </td>
-                    <td>
-                        1
-                    </td>
+                    <td>{{ $order->price }}</td>
                     <td>$10</td>
                     <td><a href=#><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
             <tfoot class="bg-light">
               <tr>
