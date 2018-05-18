@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('type');
             $table->double('price', 5, 2);
             $table->longText('description');
-            $table->binary('image');
+            $table->binary('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

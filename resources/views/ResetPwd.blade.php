@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<script src="{{ asset('js/validateForm.js') }}"></script>
+<script src="{{ asset('js/loginValidations.js') }}"></script>
 <div class="col-4">
 			<div align="left">
 				<h2 class="py-3">Reset Password</h2>
