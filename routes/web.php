@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Auth::routes();
 
@@ -35,4 +36,7 @@ Route::get('/checkEmail', function () {
 });
 Route::get('/resetPassword', function () {
     return view('ResetPwd');
+});
+Route::get('/cart', function () {
+    return view('cart');
 });

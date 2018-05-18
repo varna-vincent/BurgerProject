@@ -1,5 +1,5 @@
 
-  @extends('layouts.master')
+@extends('layouts.master')
 
 @section('content')
 <script src="{{ asset('js/validateForm.js') }}"></script>

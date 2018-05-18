@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
 <div class="container d-flex p-2">
     <div class="d-flex w-75 p-4 flex-column">
     	<div class="text-left">
