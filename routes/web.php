@@ -22,9 +22,13 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::group(['middleware' => ['auth']], function () {
+	
+    Route::apiResource('orders', 'OrderController');
+});
+
 Route::apiResource('products', 'ProductController');
 
-Route::apiResource('orders', 'OrderController');
 
 Route::get('/shop', function () {
     return view('products');
