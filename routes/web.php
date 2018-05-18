@@ -24,9 +24,7 @@ Route::get('/home', function () {
 Route::get('/shop', function () {
     return view('products');
 });
-Route::get('/signIn', function () {
-    return view('auth.signIn');
-});
+
 Route::get('/forgotpwd', function () {
     return view('forgotPwd');
 });
