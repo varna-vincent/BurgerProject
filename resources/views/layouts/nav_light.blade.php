@@ -6,7 +6,7 @@
     <a class="btn btn-outline-customlight" href="/shop">Shop</a>
     <a class="btn btn-outline-customlight" href="/contact">Contact Us</a>
     @if (!Auth::guest())
-    <a class="btn btn-outline-customlight" href="#">My Cart</a>
+    <a class="btn btn-outline-customlight" href="/orders">My Cart</a>
     <div class="btn-group">
 	  <button type="button" class="btn btn-outline-customprimary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	    {{ Auth::user()->name }}

@@ -98,5 +98,5 @@
 		</div>
 	</div>
 </div>
-<script src="{{ asset('js/validateForm.js') }}"></script>
+<script src="{{ asset('js/loginValidations.js') }}"></script>
 @endsection
