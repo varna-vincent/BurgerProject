@@ -22,6 +22,14 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
 Route::get('/shop', function () {
     return view('products');
 });
@@ -38,3 +46,9 @@ Route::get('/resetPassword', function () {
 Route::get('/cart', function () {
     return view('cart');
 });
+
+Route::get('/orderHistory', function () {
+    return view('orderHistory');
+});
+
+Route::apiResource('orders', 'OrderController');
