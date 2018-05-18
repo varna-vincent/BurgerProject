@@ -16,6 +16,11 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/cover.css" rel="stylesheet">
+    <script>
+      window.Laravel = <?php echo json_encode([
+          'csrfToken' => csrf_token(),
+      ]); ?>
+    </script>
   </head>
 
   <body class="text-center">
@@ -26,7 +31,7 @@
      
       @yield('content')
 
-      @include('layouts.footer')
+      @include('layouts.footer_light')
 
     </div>
 
