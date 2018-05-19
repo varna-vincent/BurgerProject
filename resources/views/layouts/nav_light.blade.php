@@ -3,7 +3,7 @@
   <h5 class="my-0 mr-md-auto font-weight-normal text-light logo"><a href="/">Burger Project</a></h5>
   <nav class="navbar-expand-lg my-2 my-md-0 mr-md-3">
   	<a class="btn btn-outline-customlight" href="/about">About Us</a>
-    <a class="btn btn-outline-customlight" href="/shop">Shop</a>
+    <a class="btn btn-outline-customlight" href="/products">Shop</a>
     <a class="btn btn-outline-customlight" href="/contact">Contact Us</a>
     @if (!Auth::guest())
     <a class="btn btn-outline-customlight" href="/orders">My Cart</a>

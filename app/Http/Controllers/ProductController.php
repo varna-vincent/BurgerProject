@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function __construct() {
+
+        $this->middleware('auth')->except(['index','show']);
+        $this->middleware('admin')->only(['store', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +20,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::where('status', 'Cart')->get();
-        return $products;
+        $products = Product::all();
+        return view('products', compact('products'));
     }
 
     /**
