@@ -22,13 +22,20 @@ class Order extends Model
         'id', 'user_id'
     ];
 
+    /**
+     * Get the user that owns the order.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    } 
 
     /**
-     * Get the comments for the blog post.
+     * Get the products for the order.
      */
     public function orderproducts()
     {
-        return $this->hasMany('App\OrderProduct');
+        return $this->hasMany(OrderProduct::class);
     }
 
 }

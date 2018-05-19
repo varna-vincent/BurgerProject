@@ -3,8 +3,8 @@
 @section('content')
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="container-fluid d-flex p-2">
-    <div class="col-md-7" id="basket">
+<div class="container d-flex flex-row p-2">
+    <div class="col-md-9" id="basket">
        <div class="box">
           <div class="pull-left">
              <H1>Shopping cart</H1>
@@ -23,7 +23,8 @@
                      </tr>
                  </thead>
                  <tbody>
-                    @foreach($orders->orderproducts as $order)
+
+                  @foreach($orderproducts as $order)
                   <tr>
                      <td>
                         <a><img src="images/chickenburger.jpg" alt="chicken burger" height="100" width="100"></a><br>

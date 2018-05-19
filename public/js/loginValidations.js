@@ -130,13 +130,14 @@ function validateFormLogin() {
 		document.getElementById('errlogindiv').innerHTML = 'Enter password';
 	} else if (!email_login.match(email_login_pattern)) {
 		$('#errlogindiv').addClass('alert alert-danger');
-		document.getElementById('errlogindiv').innerHTML = 'Username not correct';
+		document.getElementById('errlogindiv').innerHTML = 'Invalid email';
 	} else if (!password_login.match(password_login_pattern)) {
 		$('#errlogindiv').addClass('alert alert-danger');
 		document.getElementById('errlogindiv').innerHTML = 'Password not correct';
 	} else {
 		$('#errlogindiv').removeClass('alert alert-danger');
 		document.getElementById('errlogindiv').innerHTML = "";
+		document.getElementById("signinForm").submit();
 	}
 }
 function validateFrgtPwd() {
@@ -171,6 +172,18 @@ function validateResetPwd() {
 	} else if (!new_pwd.match(password_pattern)) {
 		$('#errDiv_reset').addClass('alert alert-danger');
 		document.getElementById('errDiv_reset').innerHTML = 'Password should contain uppercase, lowerscase,number and special characters and should be 8 characters long';
+	} else {
+		$('#errDiv_reset').removeClass('alert alert-danger');
+		document.getElementById('errDiv_reset').innerHTML = "";
+	}
+}
+function validateResetPwd() {
+	event.preventDefault();
+	var old_pwd = document.getElementById('oldPwd').value;
+	var new_pwd = document.getElementById('newPwd').value;
+	if (old_pwd == new_pwd) {
+		$('#errDiv_reset').addClass('alert alert-danger');
+		document.getElementById('errDiv_reset').innerHTML = 'New Password should not be same as old password';
 	} else {
 		$('#errDiv_reset').removeClass('alert alert-danger');
 		document.getElementById('errDiv_reset').innerHTML = "";

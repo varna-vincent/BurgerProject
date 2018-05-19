@@ -43,7 +43,7 @@ class ProductsTableSeeder extends Seeder
             'price' => '5.89',
             'description' => 'Cheese, pesto, Potato Patty, Mayo, Mustard, Onions, bell peppers'        
         ]);
-        //
+
         DB::table('products')->insert([
 
  			'name' => 'Meat Burger',

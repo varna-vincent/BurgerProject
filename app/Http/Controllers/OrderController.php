@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\OrderProduct;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,9 +15,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-
-        $orders = Order::with('orderproducts.products')->where('status','Cart')->first();
-        return view('cart', compact('orders'));
+        $order = Order::where('user_id', auth()->user()->id)->where('status', 'Cart')->first();
+        if($order != null) { 
+            $orderproducts = OrderProduct::where('order_id', $order->id)->get();
+        }
+        return view('cart', compact('order','orderproducts'));
     }
 
     /**

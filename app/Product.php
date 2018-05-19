@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
      /**
-     * Get the product record associated with the orderproduct.
+     * Get the order item that owns the product.
      */
      public function orderproduct()
     {
-        return $this->hasOne('App\OrderProduct');
+        return $this->belongsTo(OrderProduct::class);
     }
 }

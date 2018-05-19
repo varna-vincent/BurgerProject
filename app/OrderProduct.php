@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class OrderProduct extends Model
 {
     /**
-     * Get the user that owns the phone.
+     * Get the order that owns the product.
      */
     public function order()
     {
-    	return $this->belongsTo('App\Order');
+    	return $this->belongsTo(Order::class);
     } 
 
-     public function products()
+    /**
+     * Get the product record associated with the order item.
+     */
+     public function product()
     {
-    	return $this->belongsTo('App\Product');
+    	return $this->hasOne(Product::class);
     } 
-
-
-
 }
