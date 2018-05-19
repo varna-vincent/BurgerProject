@@ -4,7 +4,11 @@
 <div class="container d-flex p-3 justify-content-center">
   <div class="d-flex w-100 pt-3 flex-column">
       <div class="text-center">
-      <h1>Shopping Cart</h1> 
+      <h1 class="pb-2">Shopping Cart</h1> 
+      @empty($orderproducts)
+      <p class="text-muted">No items in cart</p>
+      @endempty
+      @isset($orderproducts)
       <form method="POST">
       <table class="mt-3 table border">
         <thead class="thead-light">
@@ -43,11 +47,12 @@
         </tfoot>
       </table>
       </form>
-    </div>
-    <div class="d-flex">
-      <a href="/products" class="btn btn-outline-primary mr-auto align-self-start m-1"><i class="fa fa-chevron-left"></i> Continue shopping</a>
-      <button class="btn btn-outline-primary m-1"><i class="fa fa-refresh"></i> Update basket</button>
-      <a href="" class="btn btn-outline-primary m-1">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
+      <div class="d-flex">
+        <a href="/products" class="btn btn-outline-primary mr-auto align-self-start m-1"><i class="fa fa-chevron-left"></i> Continue shopping</a>
+        <button class="btn btn-outline-primary m-1"><i class="fa fa-refresh"></i> Update basket</button>
+        <a href="" class="btn btn-outline-primary m-1">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
+      </div>
+      @endisset
     </div>
   </div>
 </div>
