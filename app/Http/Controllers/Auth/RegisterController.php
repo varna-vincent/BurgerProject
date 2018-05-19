@@ -50,11 +50,12 @@ class RegisterController extends Controller
     {   
         $name_regex = "/^[a-zA-Z\s]*$/";
         $password_regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/";
+        $phone_regex ="/^[0-9]{10}$/";
         return Validator::make($data, [
             'name' => array('required','string','max:255','regex:'.$name_regex ),
             'signup_email' => 'required|string|email|max:255|unique:users,email',
             'signup_password' => array('required','string','min:8','confirmed','regex:'.$password_regex ),
-            'phone' => 'numeric'
+            'phone' => array('numeric','regex:'.$phone_regex)
         ]);
     }
 

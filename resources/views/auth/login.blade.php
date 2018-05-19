@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
 					<label for="phnum_sign_up"><b>Phone number:</b></label>
-					<input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" type="tel" name="phone" placeholder="eg. 4081234567" id="phnum_sign_up">
+					<input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" type="tel" name="phone" placeholder="eg. 4081234567" id="phnum_sign_up" pattern="^[0-9]{10}$">
 					<small id="phoneHelp" class="form-text text-muted">Phone number should only contain numbers</small>
 
 					@if ($errors->has('phone'))
