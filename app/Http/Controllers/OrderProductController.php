@@ -80,6 +80,6 @@ class OrderProductController extends Controller
      */
     public function destroy(OrderProduct $orderProduct)
     {
-        //
+         $orderProduct->destroy();
     }
 }
