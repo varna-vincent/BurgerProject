@@ -1,6 +1,3 @@
-
-	alert("edfrgh");
-
 function computeTotal() {
 	/*var quantity_pattern = /^[0-9]+$/;
 	if(quantity == ""){

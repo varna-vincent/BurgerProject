@@ -15,41 +15,41 @@ class ProductsTableSeeder extends Seeder
     	DB::table('products')->insert([
 
  			'name' => 'Double Cheese Veggie Burger',
-            'type' => 'Food',
+            'type' => 'Veg',
             'price' => '7.89',
-            'description' => 'Super healthy burger including cheese, pesto, garden patty, olives, onions, carrots, bell peppers'        
+            'description' => 'Super healthy burger including Pepper Jack cheese, Pesto, Garden patty, olives, Onions, Lettuce, Bell peppers'        
         ]);
 
 		DB::table('products')->insert([
 
  			'name' => 'Chicken Burger',
-            'type' => 'Food',
+            'type' => 'Non-Veg',
             'price' => '10.89',
-            'description' => 'Cheese, pesto, Grilled Chicken Breast, olives, onions, carrots, bell peppers'        
+            'description' => 'Cheese, Pesto, Grilled Chicken Breast, Olives, Onions, Lettuce, Bell peppers'        
         ]);
 
         DB::table('products')->insert([
 
  			'name' => 'Turkey Burger',
-            'type' => 'Food',
+            'type' => 'Non-Veg',
             'price' => '9.89',
-            'description' => 'Cheese, pesto, Turkey Patty, Pepperoncini, onions, carrots, bell peppers'        
+            'description' => 'Cheese, Pesto, Turkey Patty, Pepperoni, Onions, Lettuce, Bell peppers'        
         ]);
 
         DB::table('products')->insert([
 
  			'name' => 'Cheese Burger',
-            'type' => 'Food',
+            'type' => 'Veg',
             'price' => '5.89',
-            'description' => 'Cheese, pesto, Potato Patty, Mayo, Mustard, Onions, bell peppers'        
+            'description' => 'Cheese, Pesto, Lettuce, Potato Patty, Mayo, Honey Mustard, Onions, Bell peppers'        
         ]);
 
         DB::table('products')->insert([
 
- 			'name' => 'Meat Burger',
-            'type' => 'Food',
+ 			'name' => 'Cheesy Beefy Hamburger',
+            'type' => 'Non-Veg',
             'price' => '11.89',
-            'description' => 'Cheese, pesto, Meat, Pepperoncini, onions, carrots, bell peppers, Olive Oil, Guacamole, Sliced Ham'        
+            'description' => 'Cheese, Pesto, Lean beef, Pepperoni, onions, Lettuce, Bell peppers, Olive Oil, Guacamole, Sliced Ham'        
         ]);
     }
 }

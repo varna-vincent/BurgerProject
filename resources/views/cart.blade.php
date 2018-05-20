@@ -18,7 +18,7 @@
             <th scope="col">Quantity</th>
             <th scope="col">Price</th>
             <th scope="col">Total</th>
-            <th scope="col" colspan="2">Delete</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -34,16 +34,16 @@
             <td><input type="number" value="{{ $order->quantity }}" min="1" id="quantity_{{$index}}" 
                 oninput="computeTotal({{$index}})" /></td>
                 <div id="errdiv_quantity"></div>
-            <td><label id="price_{{$index}}"> ${{ $order->price}}</label> </td>
-            <td id="each_product_total_price_{{$index}}">${{ $order->price * $order->quantity}} <td>
+            <td><label id="price_{{$index}}"> ${{ $order->price}}</label></td>
+            <td id="each_product_total_price_{{$index}}">${{ $order->price * $order->quantity}}</td>
             <td><a href="" onclick="deleteProduct({{$order->id}})"><i class="fa fa-trash-o"></i></a></td>
           </tr>
           @endforeach
         </tbody>
         <tfoot class="bg-light">
           <tr>
-             <th colspan="5" class="text-right">Total :</th>
-             <th colspan="2" id="total_price">${{$total}}</th>
+             <th colspan="4" class="text-right">Total : </th>
+             <th colspan="2" id="total_price" class="text-left">${{$total}}</th>
           </tr>
         </tfoot>
       </table>

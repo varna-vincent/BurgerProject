@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = ['id','user_id','status'];
+    protected $fillable = ['user_id','status'];
 
     /**
      * The attributes that should be hidden for arrays.
