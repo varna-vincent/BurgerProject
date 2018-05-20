@@ -40,27 +40,33 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        //
-        $this->validate(request(), [
-            $name_regex = '/^[a-zA-Z\s]*$/';
-            $description_regex = "/^[a-z0-9]+$/i";
-            'name' => array('required','string','max:255','regex:'.$name_regex ),
-            'type' => array('required','string','max:255','regex:'.$name_regex ),
-            'price' => 'required|numeric',
-            'description' => array('required','regex:'.$description_regex ),
-            'image' => 'required'
-            ]);
 
-        $product = Product::create(['name' => $request->name,
-                                'type' => $request->type,
-                                'price' => $request->price,
-                                'description' => $request->description,
-                                'image' => $request->image
+        //
+             //$name_regex = "/^a-zA-Z\s*$/";
+           // $description_regex = '/^a-z0-9+$/i';
+        echo 'I am here';
+
+        var_dump($request->input('product.0.name'));
+      /*  $this->validate(request(), [
+           
+            'name' => array('required','string','max:255','regex:'.'/^a-zA-Z\s*$/' ),
+            'type' => array('required','string','max:255','regex:'.'/^a-zA-Z\s*$/' ),
+            'price' => 'required|numeric',
+            'description' => array('required','regex:'.'/^a-z0-9+$/i' ),
+            'image' => 'required'
+            ]);*/
+
+     /*   $product = Product::create(['name' => 'Kunal',
+                                'type' => '$request->type',
+                                'price' => '1',
+                                'description' => '$request->description',
+                                'image' => '$request->image'
                                  ]);
 
-        return $product;
+        return $product;*/
 
     }
 

@@ -9,7 +9,9 @@
 			<h1 class="pb-2">Add Product</h1> 
 			<div class="d-flex mt-3 flex-column align-items-center">
 
-				<form id="addProductForm" method="POST" action="/products" onsubmit="return validateFormAddProduct()">
+				<form id="addProductForm" method="POST" action="/products" onsubmit="return validateFormAddProduct()" >
+					   {{ csrf_field() }}
+					<div id="err_div_product"></div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Name</label>
 						<input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Product Name" pattern="^[a-zA-Z\s]*$" required="true">
@@ -24,7 +26,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Description</label>
-						<input type="text" class="form-control" id="description" aria-describedby="emailHelp" placeholder="Enter Product Description" pattern="/^[a-z0-9]+$/i" required="true">
+						<input type="text" class="form-control" id="description" aria-describedby="emailHelp" placeholder="Enter Product Description"  required="true" pattern="^[a-zA-Z0-9\s]*$"/>
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlFile1">Choose an image for the product</label>
