@@ -1,43 +1,3 @@
-<<<<<<< HEAD
-function validateFormAddProduct(){
-	event.preventDefault();
-	var product_name = document.getElementById('name').value;
-	var product_type = document.getElementById('type').value;
-	var product_price = document.getElementById('price').value;
-	var product_description = document.getElementById('description').value;
-	var product_image = document.getElementById('image').value;
-
-	var name_pattern = /^[a-zA-Z\s]*$/;
-	var price_pattern = ^[1-9]\d*(\.\d+)?$;
-	var description_pattern =/^[a-z0-9]+$/i;
-
-	if( product_name == "" || product_type == "" || product_description == "" || product_image == "" || product_price == ""){
-		echo 'Please fill in all the details';
-	}
-	else if(!product_name.match(name_pattern)){
-		//$('#errdiv').addClass('alert alert-danger');
-		//document.getElementById('errdiv').innerHTML = 'Enter valid Name';
-		echo 'Enter a valid name';
-	}else if(!product_type.match(name_pattern)){
-		//$('#errdiv').addClass('alert alert-danger');
-		//document.getElementById('errdiv').innerHTML = 'Enter valid phone number';
-		echo 'Enter a valid type';
-	}else if(!product_price.match(price_pattern)){
-		//$('#errdiv').addClass('alert alert-danger');
-		//document.getElementById('errdiv').innerHTML = 'Enter valid email address';
-		echo 'Enter a valid price';
-	}else if(!product_description.match(password_sign_up_pattern)){
-		//$('#errdiv').addClass('alert alert-danger');
-		//document.getElementById('errdiv').innerHTML = 'Password should contain uppercase, lowerscase,number and special characters and should be 8 characters long';
-		echo 'Enter a valid description';
-	} else {
-		//$('#errdiv').removeClass('alert alert-danger');
-		//document.getElementById('errdiv').innerHTML = "";
-		document.getElementById("addProductForm").submit();
-	}
-
-}
-=======
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -100,27 +60,41 @@ function validateFormAddProduct(){
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 47);
+/******/ 	return __webpack_require__(__webpack_require__.s = 49);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 47:
+/***/ 49:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(48);
+module.exports = __webpack_require__(50);
 
 
 /***/ }),
 
-/***/ 48:
+/***/ 50:
 /***/ (function(module, exports) {
 
-function addToCart(product) {
-	console.log(product);
+function computeTotal() {
+	/*var quantity_pattern = /^[0-9]+$/;
+ if(quantity == ""){
+ 	$('#errdiv_quantity').addClass('alert alert-danger');
+ 	document.getElementById('errdiv_quantity').innerHTML = 'Quantity cannot be blank';
+ }else if(!quantity.match(quantity_pattern)){
+ 	$('#errdiv_quantity').addClass('alert alert-danger');
+ 	document.getElementById('errdiv_quantity').innerHTML = 'Quantity should be a number';
+ }else{
+ 	$('#errdiv_quantity').removeClass('alert alert-danger');
+ 	document.getElementById('errdiv_quantity').innerHTML = "";
+ }
+ var each_product_total = quantity * price;
+ document.getElementById('each_product_total_price').innerHTML = "$"+each_product_total;*/
+	//alert(each_product_total);
+
+	alert("sawdsefgthjk");
 }
 
 /***/ })
 
 /******/ });
->>>>>>> 6de91ec48cdbb14f5affc42f2f1ba515b6fddfaf

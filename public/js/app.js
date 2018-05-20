@@ -13925,6 +13925,7 @@ try {
  */
 
 window.axios = __webpack_require__(17);
+var axios = window.axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
