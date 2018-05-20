@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('addProduct');
     }
 
     /**
@@ -43,6 +43,25 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate(request(), [
+            $name_regex = '/^[a-zA-Z\s]*$/';
+            $description_regex = "/^[a-z0-9]+$/i";
+            'name' => array('required','string','max:255','regex:'.$name_regex ),
+            'type' => array('required','string','max:255','regex:'.$name_regex ),
+            'price' => 'required|numeric',
+            'description' => array('required','regex:'.$description_regex ),
+            'image' => 'required'
+            ]);
+
+        $product = Product::create(['name' => $request->name,
+                                'type' => $request->type,
+                                'price' => $request->price,
+                                'description' => $request->description,
+                                'image' => $request->image
+                                 ]);
+
+        return $product;
+
     }
 
     /**
