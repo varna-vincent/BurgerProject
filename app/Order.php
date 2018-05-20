@@ -11,7 +11,7 @@ class Order extends Model
      *
      * @var array
      */
-    protected $guarded = ['user_id','status'];
+    protected $guarded = ['id','user_id','status'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -19,7 +19,7 @@ class Order extends Model
      * @var array
      */
     protected $hidden = [
-        'id', 'user_id'
+        'user_id'
     ];
 
     /**

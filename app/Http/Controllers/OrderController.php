@@ -19,7 +19,12 @@ class OrderController extends Controller
         if($order != null) { 
             $orderproducts = OrderProduct::where('order_id', $order->id)->get();
         }
-        return view('cart', compact('order','orderproducts'));
+        
+        $total = $orderproducts->reduce(function ($sum, $order) {
+            return $sum += ($order->price * $order->quantity);
+        }, 0);
+
+        return view('cart', compact('order','orderproducts','total'));
     }
 
     /**
@@ -85,6 +90,6 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+       
     }
 }

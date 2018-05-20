@@ -25,6 +25,7 @@ Route::apiResource('products', 'ProductController');
 Route::group(['middleware' => ['auth']], function () {
 	
     Route::apiResource('orders', 'OrderController');
+    Route::apiResource('orderproducts', 'OrderProductController');
 });
 
 Route::get('/forgotpwd', function () {
