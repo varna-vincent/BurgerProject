@@ -19,7 +19,7 @@ class Order extends Model
      * @var array
      */
     protected $hidden = [
-        'id', 'user_id'
+        'user_id'
     ];
 
     /**
