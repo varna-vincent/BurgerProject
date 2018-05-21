@@ -23,7 +23,7 @@
         </thead>
         <tbody>
           @foreach($orderproducts as $index => $order)
-          <tr>
+          <tr id="row_{{$index}}">
             <td scope="row">
               <figure class="figure">
                 <img src="../images/chickenburger.jpg" class="w-50 h-50 figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
@@ -36,7 +36,7 @@
                 <div id="errdiv_quantity"></div>
             <td><label id="price_{{$index}}" class="price-small"> ${{ $order->price}}</label></td>
             <td id="each_product_total_price_{{$index}}" class="price-small">${{ $order->price * $order->quantity}}</td>
-            <td><a href="" onclick="deleteProduct({{$order->id}})"><i class="fa fa-trash-o"></i></a></td>
+            <td><a href="" onclick="deleteProduct({{$order->id}},{{$index}})"><i class="fa fa-trash-o"></i></a></td>
           </tr>
           @endforeach
         </tbody>

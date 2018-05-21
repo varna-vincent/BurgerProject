@@ -107,8 +107,7 @@ function validateFormAddProduct() {
 	} else {
 		//$('#errdiv').removeClass('alert alert-danger');
 		//document.getElementById('errdiv').innerHTML = "";
-		console.log(document.getElementById('image').files[0]);
-		// document.getElementById("addProductForm").submit();
+		document.getElementById("addProductForm").submit();
 	}
 }
 window.addToCart = function (product) {

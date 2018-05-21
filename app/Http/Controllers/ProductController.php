@@ -51,18 +51,15 @@ class ProductController extends Controller
             'description' => array('required','regex:'.'/^[a-zA-Z\s]*$/'),
             'image' => 'required'
             ]);
+        
+        $product = Product::create(['name' => $request->name,
+                                'type' => $request->type,
+                                'price' => $request->price,
+                                'description' => $request->description,
+                                'image' => $request->image
+                                 ]);
 
-        echo '<img src="data:image/jpeg;base64,{{ base64_encode($request->image) }}">';
-        var_dump($request->input('image'));
-
-        // $product = Product::create(['name' => $request->name,
-        //                         'type' => $request->type,
-        //                         'price' => $request->price,
-        //                         'description' => $request->description,
-        //                         'image' => $request->image
-        //                          ]);
-
-        // return $product;
+        return redirect()->route('products.index');
 
     }
 
