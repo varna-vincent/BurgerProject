@@ -2,11 +2,16 @@
 
 
 function computeTotal(index) {
-   
-    var quantity = document.getElementById("quantity_"+index).value;
+
+	var quantity = document.getElementById("quantity_"+index).value;
+    quantity = quantity.trim();
 	var price_value=document.getElementById("price_"+index).innerHTML;
+	price_value = price_value.trim();
 	var total_price_value =document.getElementById('total_price').innerHTML;
+	total_price_value.trim();
+
 	var quantity_pattern = /^[0-9]+$/;
+
 	if(quantity == ""){
 		$('#errdiv_quantity').addClass('alert alert-danger');
 		document.getElementById('errdiv_quantity').innerHTML = 'Quantity cannot be blank';
@@ -18,20 +23,21 @@ function computeTotal(index) {
 		document.getElementById('errdiv_quantity').innerHTML = "";
 	}
 
-
-	var price = price_value.substr(2);
+	var price = price_value.substr(1);
 	
-
 	var each_product_total = parseFloat(quantity) * parseFloat(price);
 	document.getElementById('each_product_total_price_'+index).innerHTML = "$"+each_product_total.toFixed(2);
 
-   var total_price = total_price_value.substr(1);
-   alert(quantity + " : "+ total_price);
+	var table_length = document.getElementsByTagName("tr");
+	var final_total =parseFloat(0);
+	for(var i=0;i<(table_length.length-2);i++){
+		var each_row_total = document.getElementById('each_product_total_price_'+i).innerHTML;		
+		var each_row_total_final = each_row_total.substr(1);
+		final_total = final_total+parseFloat(each_row_total_final);
+	}
 
-	/*var total = parseFloat(total_price) + parseFloat(price);
-
-
-	document.getElementById('total_price').innerHTML = "$"+total.toFixed(2);*/
+	var total_price = total_price_value.substr(1);
+	document.getElementById('total_price').innerHTML = "$"+final_total.toFixed(2);
 
 }
 
@@ -39,12 +45,12 @@ function deleteProduct(id){
 	if(confirm("Are you sure you want to delete?")){
 		alert(id);
 		axios.delete('/orderproducts/' + id)
-		  .then(function (response) {
-		    console.log(response);
-		  })
-		  .catch(function (error) {
-		    console.log(error);
-		  });
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
 	}
 
 }
