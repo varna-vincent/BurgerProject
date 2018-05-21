@@ -42,16 +42,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
         $this->validate(request(), [
-            $name_regex = '/^[a-zA-Z\s]*$/';
-            $description_regex = "/^[a-z0-9]+$/i";
-            'name' => array('required','string','max:255','regex:'.$name_regex ),
-            'type' => array('required','string','max:255','regex:'.$name_regex ),
+
+            'name' => array('required','string','max:255','regex:'.'/^[a-zA-Z\s]*$/' ),
+            'type' => array('required','string','max:255','regex:'.'/^[a-z0-9]+$/i' ),
             'price' => 'required|numeric',
-            'description' => array('required','regex:'.$description_regex ),
+            'description' => array('required','regex:'.'/^[a-zA-Z\s]*$/'),
             'image' => 'required'
             ]);
+
 
         $product = Product::create(['name' => $request->name,
                                 'type' => $request->type,
