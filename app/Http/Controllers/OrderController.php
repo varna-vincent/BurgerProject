@@ -17,17 +17,17 @@ class OrderController extends Controller
     {   
         $orderproducts = null;
         $order = Order::where('user_id', auth()->user()->id)->where('status', $status)->first();
+
         if($order != null) { 
             $orderproducts = OrderProduct::where('order_id', $order->id)->get();
         }
-        
 
         if($orderproducts != null && !empty($orderproducts)) {
             $total = $orderproducts->reduce(function ($sum, $order) {
                 return $sum += ($order->price * $order->quantity);
             }, 0);
         }
-            
+
         return view($status == 'Cart' ? 'cart' : 'orderHistory', compact('order','orderproducts','total'));
 
     }
@@ -50,7 +50,20 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'id' => 'bail|required',
+            'price' => 'required',
+            'name' => 'required'
+        ]);
+
+        $order = Order::firstOrCreate(['user_id' => auth()->user()->id, 'status' => 'Cart'], ['status' => 'Cart']);
+        $orderproduct = OrderProduct::firstOrNew(['order_id' => $order->id, 'product_id' => $request->input('id')]);
+        $orderproduct->name = $request->input('name');
+        $orderproduct->quantity = $orderproduct->quantity + 1;
+        $orderproduct->price = $request->input('price');
+        $orderproduct->save();
+
+        return $orderproduct;
     }
 
     /**
@@ -84,7 +97,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        
     }
 
     /**

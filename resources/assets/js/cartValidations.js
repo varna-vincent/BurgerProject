@@ -1,7 +1,7 @@
 
 
 
-function computeTotal(index) {
+window.computeTotal = function(index) {
 
 	var quantity = document.getElementById("quantity_"+index).value;
     quantity = quantity.trim();
@@ -41,7 +41,7 @@ function computeTotal(index) {
 
 }
 
-function deleteProduct(id){
+window.deleteProduct =function(id){
 	if(confirm("Are you sure you want to delete?")){
 		alert(id);
 		axios.delete('/orderproducts/' + id)
@@ -54,7 +54,7 @@ function deleteProduct(id){
 	}
 
 }
-function updateBasket(products) {
+window.updateBasket = function(products) {
 	console.log(products);
 	products = products.map((product, index) => {
 		product.quantity = document.getElementById('quantity_' + index).value;
