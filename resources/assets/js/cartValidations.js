@@ -1,5 +1,5 @@
 window.computeTotal = function(index) {
-
+    
 	var quantity = document.getElementById("quantity_" + index).value;
 	quantity = quantity.trim();
 	var price_value = document.getElementById("price_" + index).innerHTML;
@@ -37,11 +37,12 @@ window.computeTotal = function(index) {
 	document.getElementById('total_price').innerHTML = "$" + final_total.toFixed(2);
 }
 
-window.deleteProduct = function(id) {
+window.deleteProduct = function(orderproduct,index) {
+	event.preventDefault();
 	if (confirm("Are you sure you want to delete?")) {
-		alert(id);
-		axios.delete('/orderproducts/' + id).then(function (response) {
-			console.log(response);
+		
+		axios.delete('/orderproducts/' + orderproduct).then(function (response) {
+			document.getElementById("row_" + index).remove();
 		}).catch(function (error) {
 			console.log(error);
 		});

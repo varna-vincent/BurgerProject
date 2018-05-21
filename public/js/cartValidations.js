@@ -115,11 +115,12 @@ window.computeTotal = function (index) {
 	document.getElementById('total_price').innerHTML = "$" + final_total.toFixed(2);
 };
 
-window.deleteProduct = function (id) {
+window.deleteProduct = function (orderproduct, index) {
+	event.preventDefault();
 	if (confirm("Are you sure you want to delete?")) {
-		alert(id);
-		axios.delete('/orderproducts/' + id).then(function (response) {
-			console.log(response);
+
+		axios.delete('/orderproducts/' + orderproduct).then(function (response) {
+			document.getElementById("row_" + index).remove();
 		}).catch(function (error) {
 			console.log(error);
 		});
