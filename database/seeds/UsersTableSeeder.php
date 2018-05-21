@@ -26,5 +26,21 @@ class UsersTableSeeder extends Seeder
             'role' => 'user',
             'phone' => '1234567890'
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Kunal Bidkar',
+            'email' => 'kbidkar@scu.edu',
+            'password' => bcrypt('MyPassword1!'),
+            'role' => 'user',
+            'phone' => '1234567890'
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Jai Karvir',
+            'email' => 'jkarvir@scu.edu',
+            'password' => bcrypt('MyPassword1!'),
+            'role' => 'user',
+            'phone' => '1234567890'
+        ]);
     }
 }

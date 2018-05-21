@@ -60,25 +60,31 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 47);
+/******/ 	return __webpack_require__(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 47:
+/***/ 39:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(48);
+module.exports = __webpack_require__(40);
 
 
 /***/ }),
 
-/***/ 48:
+/***/ 40:
 /***/ (function(module, exports) {
 
-function addToCart(product) {
+window.addToCart = function (product) {
+
 	console.log(product);
-}
+	axios.post('/orders', product).then(function (response) {
+		console.log(response);
+	}).catch(function (error) {
+		console.log(error);
+	});
+};
 
 /***/ })
 

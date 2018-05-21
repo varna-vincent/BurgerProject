@@ -19,7 +19,7 @@
                     @endif</h4>
                     <p class="card-text pl-2 pr-2">{{ $product->description }}</p>
                     <h6 class="card-subtitle mb-2 text-muted"><blockquote class="blockquote price">${{ $product->price }}</blockquote>
-                      <button class="btn btn-outline-primary btn-sm mb-1" onclick="addToCart($product)"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                      <button class="btn btn-outline-primary btn-sm mb-1" onclick="addToCart({{$product}})"><i class="fa fa-cart-plus"></i> Add to Cart</button>
                     </h6>
                 </div>
             </div>
