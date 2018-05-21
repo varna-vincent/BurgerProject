@@ -1,29 +1,32 @@
 
 
-
 window.computeTotal = function(index) {
-
-	var quantity = document.getElementById("quantity_"+index).value;
-    quantity = quantity.trim();
-	var price_value=document.getElementById("price_"+index).innerHTML;
+    
+	var quantity = document.getElementById("quantity_" + index).value;
+	quantity = quantity.trim();
+	var price_value = document.getElementById("price_" + index).innerHTML;
 	price_value = price_value.trim();
-	var total_price_value =document.getElementById('total_price').innerHTML;
+	var total_price_value = document.getElementById('total_price').innerHTML;
+
 	total_price_value.trim();
 
 	var quantity_pattern = /^[0-9]+$/;
 
-	if(quantity == ""){
+
+	if (quantity == "") {
+
 		$('#errdiv_quantity').addClass('alert alert-danger');
 		document.getElementById('errdiv_quantity').innerHTML = 'Quantity cannot be blank';
-	}else if(!quantity.match(quantity_pattern)){
+	} else if (!quantity.match(quantity_pattern)) {
 		$('#errdiv_quantity').addClass('alert alert-danger');
 		document.getElementById('errdiv_quantity').innerHTML = 'Quantity should be a number';
-	}else{
+	} else {
 		$('#errdiv_quantity').removeClass('alert alert-danger');
 		document.getElementById('errdiv_quantity').innerHTML = "";
 	}
 
 	var price = price_value.substr(1);
+
 	
 	var each_product_total = parseFloat(quantity) * parseFloat(price);
 	document.getElementById('each_product_total_price_'+index).innerHTML = "$"+each_product_total.toFixed(2);
@@ -41,24 +44,22 @@ window.computeTotal = function(index) {
 
 }
 
-window.deleteProduct =function(id){
-	if(confirm("Are you sure you want to delete?")){
-		alert(id);
-		axios.delete('/orderproducts/' + id)
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (error) {
+window.deleteProduct = function(orderproduct,index) {
+	event.preventDefault();
+	if (confirm("Are you sure you want to delete?")) {
+		
+		axios.delete('/orderproducts/' + orderproduct).then(function (response) {
+			document.getElementById("row_" + index).remove();
+		}).catch(function (error) {
 			console.log(error);
 		});
 	}
-
 }
 window.updateBasket = function(products) {
 	console.log(products);
-	products = products.map((product, index) => {
+	products = products.map(function (product, index) {
 		product.quantity = document.getElementById('quantity_' + index).value;
-		return product; 
+		return product;
 	});
 	console.log(products);
 }

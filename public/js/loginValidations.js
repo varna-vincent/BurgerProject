@@ -76,6 +76,7 @@ module.exports = __webpack_require__(38);
 /***/ 38:
 /***/ (function(module, exports) {
 
+
 window.validateFormSignUp = function () {
 	event.preventDefault();
 	var uname_sign_up = document.getElementById('uname_sign_up').value;
@@ -118,6 +119,7 @@ window.validateFormSignUp = function () {
 		document.getElementById("signupForm").submit();
 	}
 };
+
 window.validateFormLogin = function () {
 	event.preventDefault();
 	var email_login = document.getElementById('email').value;
@@ -146,7 +148,9 @@ window.validateFormLogin = function () {
 		document.getElementById("signinForm").submit();
 	}
 };
+
 window.validateFrgtPwd = function () {
+
 	event.preventDefault();
 	var email_frgtPwd = document.getElementById('userEmail_FrgtPwd').value;
 	email_frgtPwd = email_frgtPwd.trim();
@@ -163,16 +167,18 @@ window.validateFrgtPwd = function () {
 		document.getElementById('err_frgtPwd').innerHTML = "";
 	}
 };
-window.validateResetPwd = function () {
 
+window.validateResetPwd = function () {
 	event.preventDefault();
 	var old_pwd = document.getElementById('oldPwd').value;
 	old_pwd = old_pwd.trim();
 	var new_pwd = document.getElementById('newPwd').value;
+
 	var old_pwd = document.getElementById('oldPwd').value;
 	old_pwd = old_pwd.trim();
 	var new_pwd = document.getElementById('newPwd').value;
 	new_pwd = new_pwd.trim();
+
 	var password_pattern = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
 
 	if (old_pwd == new_pwd) {

@@ -85,11 +85,13 @@ window.computeTotal = function (index) {
 	var price_value = document.getElementById("price_" + index).innerHTML;
 	price_value = price_value.trim();
 	var total_price_value = document.getElementById('total_price').innerHTML;
+
 	total_price_value.trim();
 
 	var quantity_pattern = /^[0-9]+$/;
 
 	if (quantity == "") {
+
 		$('#errdiv_quantity').addClass('alert alert-danger');
 		document.getElementById('errdiv_quantity').innerHTML = 'Quantity cannot be blank';
 	} else if (!quantity.match(quantity_pattern)) {
@@ -117,11 +119,12 @@ window.computeTotal = function (index) {
 	document.getElementById('total_price').innerHTML = "$" + final_total.toFixed(2);
 };
 
-window.deleteProduct = function (id) {
+window.deleteProduct = function (orderproduct, index) {
+	event.preventDefault();
 	if (confirm("Are you sure you want to delete?")) {
-		alert(id);
-		axios.delete('/orderproducts/' + id).then(function (response) {
-			console.log(response);
+
+		axios.delete('/orderproducts/' + orderproduct).then(function (response) {
+			document.getElementById("row_" + index).remove();
 		}).catch(function (error) {
 			console.log(error);
 		});
