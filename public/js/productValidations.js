@@ -60,21 +60,22 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 47);
+/******/ 	return __webpack_require__(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 47:
+/***/ 39:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(48);
+module.exports = __webpack_require__(40);
 
 
 /***/ }),
 
-/***/ 48:
+/***/ 40:
 /***/ (function(module, exports) {
+
 
 
 function validateFormAddProduct() {
@@ -106,9 +107,19 @@ function validateFormAddProduct() {
 	} else {
 		//$('#errdiv').removeClass('alert alert-danger');
 		//document.getElementById('errdiv').innerHTML = "";
-		document.getElementById("addProductForm").submit();
+		console.log(document.getElementById('image').files[0]);
+		// document.getElementById("addProductForm").submit();
 	}
 }
+window.addToCart = function (product) {
+
+	console.log(product);
+	axios.post('/orders', product).then(function (response) {
+		console.log(response);
+	}).catch(function (error) {
+		console.log(error);
+	});
+};
 
 /***/ })
 

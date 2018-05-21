@@ -1,4 +1,5 @@
 
+
 function validateFormAddProduct(){
 	event.preventDefault();
 	var product_name = document.getElementById('name').value;
@@ -31,5 +32,16 @@ function validateFormAddProduct(){
 		//document.getElementById('errdiv').innerHTML = "";
 		document.getElementById("addProductForm").submit();
 	}
+}
+window.addToCart = function(product) {
+
+	console.log(product);
+	axios.post('/orders', product)
+	  .then(function (response) {
+	    console.log(response);
+	  })
+	  .catch(function (error) {
+	    console.log(error);
+	  });
 
 }

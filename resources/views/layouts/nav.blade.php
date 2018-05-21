@@ -6,7 +6,7 @@
     <a class="btn btn-outline-customdark" href="/products">Shop</a>
     <a class="btn btn-outline-customdark" href="/contact">Contact Us</a>
     @if (!Auth::guest())
-    <a class="btn btn-outline-customdark" href="/orders">My Cart</a>
+    <a class="btn btn-outline-customdark" href="/orders/Cart">My Cart</a>
     <div class="btn-group">
 	  <button type="button" class="btn btn-outline-customprimary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	    {{ Auth::user()->name }}
@@ -14,7 +14,7 @@
 	  <div class="dropdown-menu">
       <a class="dropdown-item" href="/products/create">Add Product</a>
       <div class="dropdown-divider"></div>
-	    <a class="dropdown-item" href="/orderHistory">My Orders</a>
+	    <a class="dropdown-item" href="/orders/Ordered">My Orders</a>
 	    <a class="dropdown-item" href="#">My Profile</a>
 	    <a class="dropdown-item" href="#">Shipping Address</a>
 	    <div class="dropdown-divider"></div>
@@ -25,7 +25,7 @@
 	  </div>
 	</div>
 	@endif
-  	@if (Auth::guest())
+  @if (Auth::guest())
  	 <a class="btn btn-outline-primary" href="/login">Sign up / Login</a>
  	@endif
   </nav>
