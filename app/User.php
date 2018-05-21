@@ -18,6 +18,11 @@ class User extends Authenticatable
      */
     protected $dates = ['deleted_at'];
 
+
+public function isAdmin() {
+        return ($this->role === 'admin') ? true : false; // this looks for a role column in your users table
+    }
+    
     /**
      * The attributes that are mass assignable.
      *

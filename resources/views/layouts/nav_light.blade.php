@@ -12,6 +12,9 @@
 	    {{ Auth::user()->name }}
 	  </button>
 	  <div class="dropdown-menu">
+
+      <a class="dropdown-item" href="/products/create">Add Product</a>
+      <div class="dropdown-divider"></div>
 	    <a class="dropdown-item" href="/orders/Ordered">My Orders</a>
 	    <a class="dropdown-item" href="#">My Profile</a>
 	    <a class="dropdown-item" href="#">Shipping Address</a>

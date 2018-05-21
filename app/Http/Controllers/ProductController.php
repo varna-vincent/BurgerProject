@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('addProduct');
     }
 
     /**
@@ -40,9 +40,30 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        //
+
+        
+        $this->validate(request(), [
+
+            'name' => array('required','string','max:255','regex:'.'/^[a-zA-Z\s]*$/' ),
+            'type' => array('required','string','max:255','regex:'.'/^[a-z0-9]+$/i' ),
+            'price' => 'required|numeric',
+            'description' => array('required','regex:'.'/^[a-zA-Z\s]*$/'),
+            'image' => 'required'
+            ]);
+        
+        $product = Product::create(['name' => $request->name,
+                                'type' => $request->type,
+                                'price' => $request->price,
+                                'description' => $request->description,
+                                'image' => $request->image
+                                 ]);
+
+        return redirect()->route('products.index');
+
+
     }
 
     /**
