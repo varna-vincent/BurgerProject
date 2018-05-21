@@ -26,7 +26,7 @@
           <tr>
             <td scope="row">
               <figure class="figure">
-                <img src="images/chickenburger.jpg" class="w-50 h-50 figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <img src="../images/chickenburger.jpg" class="w-50 h-50 figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                 <figcaption class="figure-caption">{{ $order->name }}</figcaption>
               </figure>
             </td>

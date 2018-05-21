@@ -13,19 +13,23 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $order = Order::where('user_id', auth()->user()->id)->where('status', 'Cart')->first();
+    public function index($status)
+    {   
+        $orderproducts = null;
+        $order = Order::where('user_id', auth()->user()->id)->where('status', $status)->first();
         if($order != null) { 
             $orderproducts = OrderProduct::where('order_id', $order->id)->get();
         }
         
-        if($orderproducts != null){
-        $total = $orderproducts->reduce(function ($sum, $order) {
-            return $sum += ($order->price * $order->quantity);
-        }, 0);
-}
-        return view('cart', compact('order','orderproducts','total'));
+
+        if($orderproducts != null && !empty($orderproducts)) {
+            $total = $orderproducts->reduce(function ($sum, $order) {
+                return $sum += ($order->price * $order->quantity);
+            }, 0);
+        }
+
+        return view($status == 'Cart' ? 'cart' : 'orderHistory', compact('order','orderproducts','total'));
+
     }
 
     /**
