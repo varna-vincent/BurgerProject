@@ -76,9 +76,7 @@ module.exports = __webpack_require__(42);
 /***/ 42:
 /***/ (function(module, exports) {
 
-
-
-function computeTotal(index) {
+window.computeTotal = function (index) {
 
 	var quantity = document.getElementById("quantity_" + index).value;
 	quantity = quantity.trim();
@@ -115,9 +113,9 @@ function computeTotal(index) {
 
 	var total_price = total_price_value.substr(1);
 	document.getElementById('total_price').innerHTML = "$" + final_total.toFixed(2);
-}
+};
 
-function deleteProduct(id) {
+window.deleteProduct = function (id) {
 	if (confirm("Are you sure you want to delete?")) {
 		alert(id);
 		axios.delete('/orderproducts/' + id).then(function (response) {
@@ -126,15 +124,15 @@ function deleteProduct(id) {
 			console.log(error);
 		});
 	}
-}
-function updateBasket(products) {
+};
+window.updateBasket = function (products) {
 	console.log(products);
 	products = products.map(function (product, index) {
 		product.quantity = document.getElementById('quantity_' + index).value;
 		return product;
 	});
 	console.log(products);
-}
+};
 
 /***/ })
 
