@@ -23,10 +23,10 @@
         </thead>
         <tbody>
           @foreach($orderproducts as $index => $order)
-          <tr>
+          <tr id="row_{{$index}}">
             <td scope="row">
               <figure class="figure">
-                <img src="images/chickenburger.jpg" class="w-50 h-50 figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <img src="../images/chickenburger.jpg" class="w-50 h-50 figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                 <figcaption class="figure-caption">{{ $order->name }}</figcaption>
               </figure>
             </td>
@@ -34,16 +34,16 @@
             <td><input type="number" value="{{ $order->quantity }}" min="1" id="quantity_{{$index}}" 
                 oninput="computeTotal({{$index}})" /></td>
                 <div id="errdiv_quantity"></div>
-            <td><label id="price_{{$index}}"> ${{ $order->price}}</label></td>
-            <td id="each_product_total_price_{{$index}}">${{ $order->price * $order->quantity}}</td>
-            <td><a href="" onclick="deleteProduct({{$order->id}})"><i class="fa fa-trash-o"></i></a></td>
+            <td><label id="price_{{$index}}" class="price-small"> ${{ $order->price}}</label></td>
+            <td id="each_product_total_price_{{$index}}" class="price-small">${{ $order->price * $order->quantity}}</td>
+            <td><a href="" onclick="deleteProduct({{$order->id}},{{$index}})"><i class="fa fa-trash-o"></i></a></td>
           </tr>
           @endforeach
         </tbody>
         <tfoot class="bg-light">
           <tr>
-             <th colspan="4" class="text-right">Total : </th>
-             <th colspan="2" id="total_price" class="text-left">${{$total}}</th>
+             <th colspan="4" class="text-right price-small">Total : </th>
+             <th colspan="2" id="total_price" class="text-left price-small">${{$total}}</th>
           </tr>
         </tfoot>
       </table>
@@ -51,7 +51,7 @@
       <div class="d-flex">
         <a href="/products" class="btn btn-outline-primary mr-auto align-self-start m-1"><i class="fa fa-chevron-left"></i> Continue shopping</a>
         <button class="btn btn-outline-primary m-1" onclick="updateBasket({{$orderproducts}})"><i class="fa fa-refresh"></i> Update basket</button>
-        <a href="" class="btn btn-outline-primary m-1">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
+        <a href="" class="btn btn-outline-primary m-1">Place order <i class="fa fa-chevron-right"></i></a>
       </div>
       @endisset
     </div>

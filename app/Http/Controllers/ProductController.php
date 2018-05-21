@@ -44,29 +44,25 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        //
-             //$name_regex = "/^a-zA-Z\s*$/";
-           // $description_regex = '/^a-z0-9+$/i';
-        echo 'I am here';
+        
+        $this->validate(request(), [
 
-        var_dump($request->input('product.0.name'));
-      /*  $this->validate(request(), [
-           
-            'name' => array('required','string','max:255','regex:'.'/^a-zA-Z\s*$/' ),
-            'type' => array('required','string','max:255','regex:'.'/^a-zA-Z\s*$/' ),
+            'name' => array('required','string','max:255','regex:'.'/^[a-zA-Z\s]*$/' ),
+            'type' => array('required','string','max:255','regex:'.'/^[a-z0-9]+$/i' ),
             'price' => 'required|numeric',
-            'description' => array('required','regex:'.'/^a-z0-9+$/i' ),
+            'description' => array('required','regex:'.'/^[a-zA-Z\s]*$/'),
             'image' => 'required'
-            ]);*/
-
-     /*   $product = Product::create(['name' => 'Kunal',
-                                'type' => '$request->type',
-                                'price' => '1',
-                                'description' => '$request->description',
-                                'image' => '$request->image'
+            ]);
+        
+        $product = Product::create(['name' => $request->name,
+                                'type' => $request->type,
+                                'price' => $request->price,
+                                'description' => $request->description,
+                                'image' => $request->image
                                  ]);
 
-        return $product;*/
+        return redirect()->route('products.index');
+
 
     }
 

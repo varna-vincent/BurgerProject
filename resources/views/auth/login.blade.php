@@ -31,7 +31,7 @@
 
                 <div class="form-group">
                     <label for="password"><b>Password</b></label>
-                    <input id="password_sign_up" type="password" class="form-control{{ $errors->has('signup_password') ? ' is-invalid' : '' }}"  placeholder="Enter password" name="signup_password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" required>
+                    <input id="password_sign_up" type="password" class="form-control{{ $errors->has('signup_password') ? ' is-invalid' : '' }}"  placeholder="Enter password" name="signup_password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" autocomplete="off" required>
                     <small id="passwordHelp" class="form-text text-muted">Password must contain atleast 8 characters, 1 upper, 1 lower, 1 number and 1 special character</small>
 
                     @if ($errors->has('signup_password'))
@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password-confirm"><b>Confirm Password</b></label>
-                    <input id="confirm_password_sign_up" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" class="form-control" placeholder="Confirm password" name="signup_password_confirmation" required>
+                    <input id="confirm_password_sign_up" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" class="form-control" placeholder="Confirm password" name="signup_password_confirmation" autocomplete="off" required>
                 </div>
                 <div class="form-group">
 					<label for="phnum_sign_up"><b>Phone number:</b></label>
@@ -79,7 +79,7 @@
 				</div>
 				<div class="form-group">
 					<label for="pwd"><b>Password:</b></label>
-					<input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="pwd" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" placeholder="Enter password" required="">
+					<input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="pwd" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" placeholder="Enter password" required="" autocomplete="off">
 
                     @if ($errors->has('password'))
                         <span class="invalid-feedback">

@@ -23,9 +23,10 @@ Route::get('/contact', function () { return view('contact'); });
 Route::Resource('products', 'ProductController');
 
 Route::group(['middleware' => ['auth']], function () {
-	
-    Route::apiResource('orders', 'OrderController');
-    Route::apiResource('orderproducts', 'OrderProductController');
+
+	Route::get('orders/{status}', ['as' => 'orders.index', 'uses' => 'OrderController@index']);
+    Route::resource('orders', 'OrderController', ['except' => ['index', 'create', 'edit']]);
+    Route::resource('orderproducts', 'OrderProductController', ['except' => ['index', 'create', 'edit', 'store', 'show', 'update']]);
 });
 
 Route::get('/forgotpwd', function () {
@@ -36,4 +37,7 @@ Route::get('/checkEmail', function () {
 });
 Route::get('/resetPassword', function () {
     return view('ResetPwd');
+});
+Route::get('/checkout', function () {
+    return view('checkout');
 });
