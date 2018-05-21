@@ -35,16 +35,9 @@
           </tr>
           @endforeach
         </tbody>
-        <tfoot class="bg-light">
-          <tr>
-             <th colspan="4" class="text-right price-small">Total : </th>
-             <th id="total_price" class="text-left price-small">${{$total}}</th>
-          </tr>
-        </tfoot>
       </table>
       @endisset
     </div>
   </div>
 </div>
-<script src="{{ asset('js/cartValidations.js') }}"></script>
 @endsection

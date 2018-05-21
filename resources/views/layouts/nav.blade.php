@@ -23,7 +23,7 @@
 	  </div>
 	</div>
 	@endif
-  	@if (Auth::guest())
+  @if (Auth::guest())
  	 <a class="btn btn-outline-primary" href="/login">Sign up / Login</a>
  	@endif
   </nav>
