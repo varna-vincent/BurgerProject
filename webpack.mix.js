@@ -11,7 +11,7 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
+mix.js('resources/assets/js/bootstrap.js', 'public/js')
    .js('resources/assets/js/loginValidations.js', 'public/js')
    .js('resources/assets/js/productValidations.js', 'public/js')
    .js('resources/assets/js/cartValidations.js', 'public/js')
