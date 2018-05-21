@@ -38,3 +38,6 @@ Route::get('/checkEmail', function () {
 Route::get('/resetPassword', function () {
     return view('ResetPwd');
 });
+Route::get('/checkout', function () {
+    return view('checkout');
+});

@@ -78,8 +78,9 @@ class OrderProductController extends Controller
      * @param  \App\OrderProduct  $orderProduct
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OrderProduct $orderProduct)
-    {
-         $orderProduct->destroy();
+    public function destroy(OrderProduct $orderproduct)
+    {   
+        $orderproduct->delete();
+        return $orderproduct;
     }
 }
