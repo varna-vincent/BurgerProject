@@ -27,7 +27,7 @@ class OrderController extends Controller
                 return $sum += ($order->price * $order->quantity);
             }, 0);
         }
-
+            
         return view($status == 'Cart' ? 'cart' : 'orderHistory', compact('order','orderproducts','total'));
 
     }
