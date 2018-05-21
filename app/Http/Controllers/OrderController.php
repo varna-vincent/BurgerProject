@@ -17,16 +17,17 @@ class OrderController extends Controller
     {   
         $orderproducts = null;
         $order = Order::where('user_id', auth()->user()->id)->where('status', $status)->first();
+
         if($order != null) { 
             $orderproducts = OrderProduct::where('order_id', $order->id)->get();
         }
-        
+
         if($orderproducts != null && !empty($orderproducts)) {
             $total = $orderproducts->reduce(function ($sum, $order) {
                 return $sum += ($order->price * $order->quantity);
             }, 0);
         }
-
+        
         return view($status == 'Cart' ? 'cart' : 'orderHistory', compact('order','orderproducts','total'));
     }
 
