@@ -35,7 +35,7 @@
               </figure>
             </td>
             <th scope="row">{{ $item->name }}</th>
-            <td><input type="number" value="{{ $item->quantity }}" min="1" id="quantity_{{$index}}" 
+            <td><input type="number" value="{{ $item->quantity }}" min="1" max="20" id="quantity_{{$index}}" 
                 oninput="computeTotal({{$index}})" /></td>
                 <div id="errdiv_quantity"></div>
             <td><label id="price_{{$index}}" class="price-small"> ${{ $item->price}}</label></td>

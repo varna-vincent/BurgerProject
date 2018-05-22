@@ -78,7 +78,7 @@ module.exports = __webpack_require__(40);
 
 
 
-function validateFormAddProduct() {
+window.validateFormAddProduct = function () {
 	event.preventDefault();
 	var product_name = document.getElementById('name').value;
 	var product_type = document.getElementById('type').value;
@@ -86,30 +86,32 @@ function validateFormAddProduct() {
 	var product_description = document.getElementById('description').value;
 	var product_image = document.getElementById('image').value;
 
+	var product_name_pattern = /^[a-zA-Z\s]*$/;
+	var product_type_pattern = /^[a-zA-Z\s]*$/;
+	var product_price_pattern = /^[1-9]\d*(\.\d+)?$/;
+	var product_description_pattern = /^[a-zA-Z,\s]*$/;
+
 	if (product_name == "" || product_type == "" || product_description == "" || product_image == "" || product_price == "") {
-		//echo 'Please fill in all the details';
-	} else if (!product_name.match('/^[a-zA-Z\s]*$/')) {
-		//$('#errdiv').addClass('alert alert-danger');
-		//document.getElementById('errdiv').innerHTML = 'Enter valid Name';
-		//echo 'Enter a valid name';
-	} else if (!product_type.match('/^[a-zA-Z\s]*$/')) {
-		//$('#errdiv').addClass('alert alert-danger');
-		//document.getElementById('errdiv').innerHTML = 'Enter valid phone number';
-		//echo 'Enter a valid type';
-	} else if (!product_price.match('^[1-9]\d*(\.\d+)?$')) {
-		//$('#errdiv').addClass('alert alert-danger');
-		//document.getElementById('errdiv').innerHTML = 'Enter valid email address';
-		//echo 'Enter a valid price';
-	} else if (!product_description.match('/^[a-z0-9]+$/i')) {
-		//$('#errdiv').addClass('alert alert-danger');
-		//document.getElementById('errdiv').innerHTML = 'Password should contain uppercase, lowerscase,number and special characters and should be 8 characters long';
-		//echo 'Enter a valid description';
+		$('#error_div_add_product').addClass('alert alert-danger');
+		document.getElementById('error_div_add_product').innerHTML = 'Enter all the fields';
+	} else if (!product_name.match(product_name_pattern)) {
+		$('#error_div_add_product').addClass('alert alert-danger');
+		document.getElementById('error_div_add_product').innerHTML = 'Product name should contain only alphabets';
+	} else if (!product_type.match(product_type_pattern)) {
+		$('#error_div_add_product').addClass('alert alert-danger');
+		document.getElementById('error_div_add_product').innerHTML = 'Product Type should contain only alphabets';
+	} else if (!product_price.match(product_price_pattern)) {
+		$('#error_div_add_product').addClass('alert alert-danger');
+		document.getElementById('error_div_add_product').innerHTML = 'Enter correct price';
+	} else if (!product_description.match(product_description_pattern)) {
+		$('#error_div_add_product').addClass('alert alert-danger');
+		document.getElementById('error_div_add_product').innerHTML = 'Description should contain only alphabets';
 	} else {
-		//$('#errdiv').removeClass('alert alert-danger');
-		//document.getElementById('errdiv').innerHTML = "";
+		$('#error_div_add_product').removeClass('alert alert-danger');
+		document.getElementById('error_div_add_product').innerHTML = " ";
 		document.getElementById("addProductForm").submit();
 	}
-}
+};
 
 window.addToCart = function (product) {
 

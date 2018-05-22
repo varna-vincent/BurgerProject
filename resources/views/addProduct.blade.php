@@ -8,7 +8,7 @@
 		<div class="text-center">
 			<h1 class="pb-2">Add Product</h1> 
 			<div class="d-flex mt-3 flex-column align-items-center">
-
+                <div id="error_div_add_product"></div>
 				<form id="addProductForm" method="POST" action="/products" enctype=”multipart/form-data” onsubmit="return validateFormAddProduct()">
 					    {{ csrf_field() }}
 					<div class="form-group">
@@ -24,7 +24,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Type</label>
-						<input type="text" class="form-control{{ $errors->has('type') ? ' is-invalid' : '' }}" id="type" aria-describedby="emailHelp" placeholder="Enter Product Type" pattern="^[a-zA-Z\s]*$" name="type" required="true">
+						<input type="text" class="form-control{{ $errors->has('type') ? ' is-invalid' : '' }}" id="type" aria-describedby="emailHelp" placeholder="Enter Product Type" pattern="^[a-zA-Z\s]*$" name="type"  required="true">
 						 @if ($errors->has('type'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('type') }}</strong>
@@ -42,7 +42,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Description</label>
-						<input type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" id="description" aria-describedby="emailHelp" placeholder="Enter Product Description" name="description" required="true">
+						<input type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" id="description" aria-describedby="emailHelp" placeholder="Enter Product Description" name="description" pattern="^[a-zA-Z,\s]*" required="true">
 						 @if ($errors->has('description'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('description') }}</strong>
@@ -51,7 +51,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlFile1">Choose an image for the product</label>
-						<input type="file" class="form-control form-control-file" accept="image/*" id="image" name="image" required="true">
+						<input type="file" class="form-control form-control-file" accept="image/*" id="image" name="image" required="true" >
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form></div>
@@ -59,5 +59,5 @@
 		</div>
 	</div>
 
-<script src="{{ asset('js/productValidation.js') }}"></script>
+<script src="{{ asset('js/productValidations.js') }}"></script>
 	@endsection
