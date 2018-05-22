@@ -19,7 +19,9 @@
                     @endif</h4>
                     <p class="card-text pl-2 pr-2">{{ $product->description }}</p>
                     <h6 class="card-subtitle mb-2 text-muted"><blockquote class="blockquote price">${{ $product->price }}</blockquote>
+                      @if (!Auth::guest())
                       <button class="btn btn-outline-primary btn-sm mb-1" onclick="addToCart({{$product}})"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                      @endif
                     </h6>
                 </div>
             </div>

@@ -22,21 +22,21 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($orderproducts as $index => $order)
+          @foreach($orderproducts as $index => $item)
           <tr id="row_{{$index}}">
             <td scope="row">
               <figure class="figure">
                 <img src="../images/chickenburger.jpg" class="w-50 h-50 figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                <figcaption class="figure-caption">{{ $order->name }}</figcaption>
+                <figcaption class="figure-caption">{{ $item->name }}</figcaption>
               </figure>
             </td>
-            <th scope="row">{{ $order->name }}</th>
-            <td><input type="number" value="{{ $order->quantity }}" min="1" id="quantity_{{$index}}" 
+            <th scope="row">{{ $item->name }}</th>
+            <td><input type="number" value="{{ $item->quantity }}" min="1" id="quantity_{{$index}}" 
                 oninput="computeTotal({{$index}})" /></td>
                 <div id="errdiv_quantity"></div>
-            <td><label id="price_{{$index}}" class="price-small"> ${{ $order->price}}</label></td>
-            <td id="each_product_total_price_{{$index}}" class="price-small">${{ $order->price * $order->quantity}}</td>
-            <td><a href="" onclick="deleteProduct({{$order->id}},{{$index}})"><i class="fa fa-trash-o"></i></a></td>
+            <td><label id="price_{{$index}}" class="price-small"> ${{ $item->price}}</label></td>
+            <td id="each_product_total_price_{{$index}}" class="price-small">${{ $item->price * $item->quantity}}</td>
+            <td><a href="" onclick="deleteProduct({{$item->id}},{{$index}})"><i class="fa fa-trash-o"></i></a></td>
           </tr>
           @endforeach
         </tbody>
@@ -50,8 +50,8 @@
       </form>
       <div class="d-flex">
         <a href="/products" class="btn btn-outline-primary mr-auto align-self-start m-1"><i class="fa fa-chevron-left"></i> Continue shopping</a>
-        <button class="btn btn-outline-primary m-1" onclick="updateBasket({{$orderproducts}})"><i class="fa fa-refresh"></i> Update basket</button>
-        <a href="" class="btn btn-outline-primary m-1">Place order <i class="fa fa-chevron-right"></i></a>
+        <button class="btn btn-outline-primary m-1" onclick="updateBasket({{$orderproducts}},{{$order}})"><i class="fa fa-refresh"></i> Update basket</button>
+        <a href="/checkout" class="btn btn-outline-primary m-1">Place order <i class="fa fa-chevron-right"></i></a>
       </div>
       @endisset
     </div>
