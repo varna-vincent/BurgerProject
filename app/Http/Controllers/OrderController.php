@@ -15,21 +15,17 @@ class OrderController extends Controller
      */
     public function index($status)
     {   
-        $orderproducts = null;
-        $order = Order::where('user_id', auth()->user()->id)->where('status', $status)->first();
+        $orders = Order::with('orderproducts')->where('user_id', auth()->user()->id)->where('status', $status)->get();
 
-        if($order != null) { 
-            $orderproducts = OrderProduct::where('order_id', $order->id)->get();
+        foreach ($orders as $order) {
+            $orderproducts = $order->orderproducts;
+            if($orderproducts != null && !empty($orderproducts)) {
+                $total = $orderproducts->reduce(function ($sum, $product) {
+                    return $sum += ($product->price * $product->quantity);
+                }, 0);
+            }
         }
-
-        if($orderproducts != null && !empty($orderproducts)) {
-            $total = $orderproducts->reduce(function ($sum, $order) {
-                return $sum += ($order->price * $order->quantity);
-            }, 0);
-        }
-
-        return view($status == 'Cart' ? 'cart' : 'orderHistory', compact('order','orderproducts','total'));
-
+        return view($status == 'Cart' ? 'cart' : 'orderHistory', compact('order','orderproducts','total','orders'));
     }
 
     /**
@@ -73,7 +69,7 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Order $order)
-    {
+    {  
         //
     }
 
@@ -96,30 +92,30 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Order $order)
-    {
-      //return $request->input('products');
+    {   
+        $this->validate(request(), [
+            'status' => 'bail|required|string|min:4|max:7',
+            'products.*.quantity' => 'required|numeric'
+        ]);
 
-        $message = null;
-        $orderproducts = OrderProduct::where('order_id', $order->id)->get();
+        $status = $request->input('status');
+        $products = $request->input('products');
 
-        foreach ($orderproducts as $orderproduct) {
-
-            $product = Product::where('id', $orderproduct->product_id)->first();
-            if($product->available_count >= $orderproduct->quantity) {
-                $product->available_count = $product->available_count - $orderproduct->quantity;
-                $product->save();
-
-            } else {
-                $message = "NA";
-                return compact('product', 'message');
-                break;
-            }
+        foreach ($products as $product) {
+            $orderproduct = OrderProduct::find($product['id']);
+            if($orderproduct->quantity != $product['quantity']) {
+                $orderproduct->quantity = $product['quantity'];
+                $orderproduct->save();
+            } 
         }
 
-        $order->status = $request->input('status');
-        $order->save();
+        if($status == 'Cart' || $status == 'Ordered') {
 
-        return compact('order');
+            $order->status = $status;
+            $order->save();
+        } 
+
+        return compact('order','status','products');
     }
 
     /**
