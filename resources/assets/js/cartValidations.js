@@ -71,16 +71,66 @@ window.deleteProduct = function(orderproduct,index) {
 
 1}
 
-window.updateBasket = function(products, order) {
-	//console.log(products);
-	//console.log(order.id);
-	products = products.map(function (product, index) {
-		product.quantity = document.getElementById('quantity_' + index).value;
-	});
+window.isQuantityValid = function(){
 
-	axios.patch('/orders/' + order.id, {
-		'products' : products
-	}).then(function (response) {
-		console.log(response);
-	});
+	var table = document.getElementsByTagName("tr");
+	var table_len = table.length;
+
+	var quantity_pattern = /^[0-9]+$/;
+
+	for(var i=0; i < table_len-2;i++){
+		var quantity_td = document.getElementById('quantity_'+i).value;    
+		quantity_td = quantity_td.trim();
+
+		if(quantity_td ==""){
+			$('#errdiv_quantity').addClass('alert alert-danger');
+			document.getElementById('errdiv_quantity').innerHTML = 'Quantity cannot be blank';
+			return false;
+		}else if(quantity_td  < 0){
+			$('#errdiv_quantity').addClass('alert alert-danger');
+			document.getElementById('errdiv_quantity').innerHTML = 'Quantity should be positive number';
+			return false;
+		}else if(!quantity_td.match(quantity_pattern)){
+			$('#errdiv_quantity').addClass('alert alert-danger');
+			document.getElementById('errdiv_quantity').innerHTML = 'Quantity should be positive number';
+			return false;
+		}else{
+			$('#errdiv_quantity').removeClass('alert alert-danger');
+			document.getElementById('errdiv_quantity').innerHTML = "";
+		}
+	}
+	return true;
+}
+
+window.updateBasket = function(products, order) {
+	process(products, order, 'Cart');
+}
+
+window.placeOrder = function(products, order) {
+	process(products, order, 'Ordered');
+}
+
+var process = function(products, order, status) {
+
+	if(isQuantityValid()) {
+
+		products = products.map(function (product, index) {
+			if(document.getElementById('quantity_' + index)) {
+				product.quantity = document.getElementById('quantity_' + index).value;
+				return product;
+			}
+		}).filter(function(product) {
+			return (product === undefined) ? false : true;
+		});
+
+		console.log(products);
+		axios.patch('/orders/' + order.id, {
+			'products' : products,
+			'status' : status
+		}).then(function (response) {
+			if(response.data.status === 'Ordered') {
+				location.href = '/orders/Ordered';
+			}
+		});
+	}
 }

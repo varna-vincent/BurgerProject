@@ -49,7 +49,7 @@ class ProductController extends Controller
             'type' => array('required','string','max:255','regex:'.'/^[a-z0-9]+$/i' ),
             'price' => 'required|numeric',
             'description' => array('required','regex:'.'/^[a-zA-Z\s]*$/'),
-            'image' => 'required'
+            'image' => 'required|mimes:jpeg,bmp,png'
             ]);
         
         $product = Product::create(['name' => $request->name,

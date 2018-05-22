@@ -33,6 +33,7 @@ function validateFormAddProduct(){
 		document.getElementById("addProductForm").submit();
 	}
 }
+
 window.addToCart = function(product) {
 
 	axios.post('/orders', product)
