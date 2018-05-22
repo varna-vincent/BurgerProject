@@ -78,10 +78,7 @@ module.exports = __webpack_require__(40);
 
 window.addToCart = function (product) {
 
-	console.log(product);
-	axios.post('/orders', product).then(function (response) {
-		console.log(response);
-	}).catch(function (error) {
+	axios.post('/orders', product).then(function (response) {}).catch(function (error) {
 		console.log(error);
 	});
 };

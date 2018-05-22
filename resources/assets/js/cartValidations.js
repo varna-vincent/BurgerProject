@@ -1,7 +1,7 @@
 
 
 window.computeTotal = function(index) {
-    
+
 	var quantity = document.getElementById("quantity_" + index).value;
 	quantity = quantity.trim();
 	var price_value = document.getElementById("price_" + index).innerHTML;
@@ -50,10 +50,25 @@ window.deleteProduct = function(orderproduct,index) {
 		
 		axios.delete('/orderproducts/' + orderproduct).then(function (response) {
 			document.getElementById("row_" + index).remove();
+			var table_length = document.getElementsByTagName("tr");
+			var total_price_value = document.getElementById('total_price').innerHTML;
+
+			total_price_value.trim();
+			var final_total =parseFloat(0);
+			for(var i=0;i<(table_length.length-2);i++){
+				var each_row_total = document.getElementById('each_product_total_price_'+i).innerHTML;		
+				var each_row_total_final = each_row_total.substr(1);
+				final_total = final_total+parseFloat(each_row_total_final);
+			}
+
+			var total_price = total_price_value.substr(1);
+			document.getElementById('total_price').innerHTML = "$"+final_total.toFixed(2);
+			
 		}).catch(function (error) {
 			console.log(error);
 		});
 	}
+
 }
 window.updateBasket = function(products) {
 	console.log(products);
