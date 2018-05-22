@@ -46,9 +46,9 @@ class ProductController extends Controller
         $this->validate(request(), [
 
             'name' => array('required','string','max:255','regex:'.'/^[a-zA-Z\s]*$/' ),
-            'type' => array('required','string','max:255','regex:'.'/^[a-z0-9]+$/i' ),
+            'type' => array('required','string','max:255','regex:'.'/^[a-zA-Z\s]*$/' ),
             'price' => 'required|numeric',
-            'description' => array('required','regex:'.'/^[a-zA-Z\s]*$/'),
+            'description' => array('required','regex:'.'/^[a-zA-Z,\s]*$/'),
             'image' => 'required'
             ]);
         
