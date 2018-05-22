@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\OrderProduct;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -52,7 +53,7 @@ class OrderController extends Controller
             'name' => 'required'
         ]);
 
-        $order = Order::firstOrCreate(['user_id' => auth()->user()->id, 'status' => 'Cart'], ['status' => 'Cart']);
+        $order = Order::firstOrCreate(['user_id' => auth()->user()->id, 'status' => 'Cart'], ['status' => 'Cart', 'ordered_on' => Carbon::now()]);
         $orderproduct = OrderProduct::firstOrNew(['order_id' => $order->id, 'product_id' => $request->input('id')]);
         $orderproduct->name = $request->input('name');
         $orderproduct->quantity = $orderproduct->quantity + 1;

@@ -1,6 +1,5 @@
 <?php
 
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -18,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->nullable();
             $table->string('status');
-            $table->timestamp('ordered_on')->default(Carbon::now());
+            $table->timestamp('ordered_on');
             $table->timestamps();
             $table->softDeletes();
         });
