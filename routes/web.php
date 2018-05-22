@@ -20,7 +20,7 @@ Route::get('/about', function () { return view('about'); });
 
 Route::get('/contact', function () { return view('contact'); });
 
-Route::Resource('products', 'ProductController');
+Route::resource('products', 'ProductController');
 
 Route::group(['middleware' => ['auth']], function () {
 

@@ -10,7 +10,7 @@ class ProductController extends Controller
     public function __construct() {
 
         $this->middleware('auth')->except(['index','show']);
-        $this->middleware('admin')->only(['store', 'update', 'destroy']);
+        $this->middleware('admin')->only(['create', 'store', 'update', 'destroy']);
     }
 
     /**
