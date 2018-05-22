@@ -97,7 +97,29 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        
+      //return $request->input('products');
+
+        $message = null;
+        $orderproducts = OrderProduct::where('order_id', $order->id)->get();
+
+        foreach ($orderproducts as $orderproduct) {
+
+            $product = Product::where('id', $orderproduct->product_id)->first();
+            if($product->available_count >= $orderproduct->quantity) {
+                $product->available_count = $product->available_count - $orderproduct->quantity;
+                $product->save();
+
+            } else {
+                $message = "NA";
+                return compact('product', 'message');
+                break;
+            }
+        }
+
+        $order->status = $request->input('status');
+        $order->save();
+
+        return compact('order');
     }
 
     /**

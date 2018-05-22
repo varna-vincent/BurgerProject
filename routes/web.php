@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/checkout', function () { return view('checkout'); });
 	Route::get('orders/{status}', ['as' => 'orders.index', 'uses' => 'OrderController@index']);
+	Route::put('orders/{order}', ['as' => 'orders.index', 'uses' => 'OrderController@update']);
     Route::resource('orders', 'OrderController', ['except' => ['index', 'create', 'edit']]);
     Route::resource('orderproducts', 'OrderProductController', ['except' => ['index', 'create', 'edit', 'store', 'show', 'update']]);
 });
