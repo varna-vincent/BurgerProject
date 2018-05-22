@@ -69,12 +69,18 @@ window.deleteProduct = function(orderproduct,index) {
 		});
 	}
 
-}
-window.updateBasket = function(products) {
-	console.log(products);
+1}
+
+window.updateBasket = function(products, order) {
+	//console.log(products);
+	//console.log(order.id);
 	products = products.map(function (product, index) {
 		product.quantity = document.getElementById('quantity_' + index).value;
-		return product;
 	});
-	console.log(products);
+
+	axios.patch('/orders/' + order.id, {
+		'products' : products
+	}).then(function (response) {
+		console.log(response);
+	});
 }
