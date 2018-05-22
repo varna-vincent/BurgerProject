@@ -51,7 +51,7 @@
       <div class="d-flex">
         <a href="/products" class="btn btn-outline-primary mr-auto align-self-start m-1"><i class="fa fa-chevron-left"></i> Continue shopping</a>
         <button class="btn btn-outline-primary m-1" onclick="updateBasket({{$orderproducts}})"><i class="fa fa-refresh"></i> Update basket</button>
-        <a href="" class="btn btn-outline-primary m-1">Place order <i class="fa fa-chevron-right"></i></a>
+        <a href="/checkout" class="btn btn-outline-primary m-1">Place order <i class="fa fa-chevron-right"></i></a>
       </div>
       @endisset
     </div>
