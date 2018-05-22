@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
-{
+{   
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -51,5 +51,18 @@ class LoginController extends Controller
             'email' => 'required|string|email|max:255',
             'password' => array('required','string','min:8','regex:'.$password_regex )
         ]);
+    } 
+
+    /**
+     * Determine if the user has too many failed login attempts.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    protected function hasTooManyLoginAttempts(Request $request)
+    {
+        return $this->limiter()->tooManyAttempts(
+            $this->throttleKey($request), 3, 32
+        );
     }
 }
