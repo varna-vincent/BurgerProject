@@ -1,11 +1,16 @@
 
-function validateFormSignUp(){
+window.validateFormSignUp =  function(){
 	event.preventDefault();
 	var uname_sign_up = document.getElementById('uname_sign_up').value;
+	uname_sign_up = uname_sign_up.trim();
 	var email_sign_up = document.getElementById('email_sign_up').value;
+	email_sign_up = email_sign_up.trim();
 	var password_sign_up = document.getElementById('password_sign_up').value;
+	password_sign_up = password_sign_up.trim();
 	var confirm_password_sign_up = document.getElementById('confirm_password_sign_up').value;
+	confirm_password_sign_up = confirm_password_sign_up.trim();
 	var phnum_sign_up = document.getElementById('phnum_sign_up').value;
+	phnum_sign_up = phnum_sign_up.trim();
 
 	var uname_sign_up_pattern = /^[a-zA-Z\s]*$/;
 	var email_sign_up_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
@@ -38,10 +43,13 @@ function validateFormSignUp(){
 		document.getElementById("signupForm").submit();
 	} 
 }
-function validateFormLogin() {
+
+window.validateFormLogin = function() {
 	event.preventDefault();
 	var email_login = document.getElementById('email').value;
+	email_login = email_login.trim();
 	var password_login = document.getElementById('pwd').value;
+	password_login = password_login.trim();
 
 	var email_login_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 	var password_login_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
@@ -65,9 +73,12 @@ function validateFormLogin() {
     }
 
 }
-function validateFrgtPwd(){
+
+window.validateFrgtPwd = function(){
+
 	event.preventDefault();
 	var email_frgtPwd = document.getElementById('userEmail_FrgtPwd').value;
+	email_frgtPwd = email_frgtPwd.trim();
 	var email_frgtPwd_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
 	if(email_frgtPwd == ""){
@@ -81,11 +92,18 @@ function validateFrgtPwd(){
 		document.getElementById('err_frgtPwd').innerHTML = "";
 	}
 }
-function validateResetPwd(){
 
+window.validateResetPwd =  function(){
 	event.preventDefault();
 	var old_pwd =  document.getElementById('oldPwd').value;
+	old_pwd = old_pwd.trim();
 	var new_pwd =  document.getElementById('newPwd').value;
+
+	var old_pwd = document.getElementById('oldPwd').value;
+	old_pwd = old_pwd.trim();
+	var new_pwd = document.getElementById('newPwd').value;
+	new_pwd = new_pwd.trim();
+
 	var password_pattern = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
 
 	if(old_pwd == new_pwd){
@@ -102,16 +120,4 @@ function validateResetPwd(){
 		document.getElementById('errDiv_reset').innerHTML = "";
 	}
 }
-function validateResetPwd(){
-	event.preventDefault();
-	var old_pwd =  document.getElementById('oldPwd').value;
-	var new_pwd =  document.getElementById('newPwd').value;
-	if(old_pwd == new_pwd){
-		$('#errDiv_reset').addClass('alert alert-danger');
-		document.getElementById('errDiv_reset').innerHTML = 'New Password should not be same as old password';
-	}else{
-		$('#errDiv_reset').removeClass('alert alert-danger');
-		document.getElementById('errDiv_reset').innerHTML = "";
-	}
 
-}

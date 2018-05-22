@@ -5,10 +5,17 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class User extends Authenticatable
 {
     use Notifiable;
 
+
+
+public function isAdmin() {
+        return ($this->role === 'admin') ? true : false; // this looks for a role column in your users table
+    }
+    
     /**
      * The attributes that are mass assignable.
      *
