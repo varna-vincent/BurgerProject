@@ -25,7 +25,7 @@ class OrderController extends Controller
                 }, 0);
             }
         }
-        return view($status == 'Cart' ? 'cart' : 'orderHistory', compact('order','orderproducts','total','orders'));
+        return view($status == 'Cart' ? 'cart' : 'orderHistory', compact('orderproducts','total','orders'));
     }
 
     /**
