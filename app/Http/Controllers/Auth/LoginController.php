@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
-{   
+{  
+    public $decayMinutes = 30;
+     
     /*
     |--------------------------------------------------------------------------
     | Login Controller
