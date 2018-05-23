@@ -17,8 +17,6 @@
       <div class="dropdown-divider"></div>
       @endif
 	    <a class="dropdown-item" href="/orders/Ordered">My Orders</a>
-	    <a class="dropdown-item" href="#">My Profile</a>
-	    <a class="dropdown-item" href="#">Shipping Address</a>
 	    <div class="dropdown-divider"></div>
 	    <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>    
         <form id="logout-form" name="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
