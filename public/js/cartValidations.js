@@ -202,6 +202,7 @@ var process = function process(products, order, status) {
 			'status': status
 		}).then(function (response) {
 			if (response.data.status === 'Ordered') {
+				alert("You have successfully placed the order");
 				location.href = '/orders/Ordered';
 			}
 		});
